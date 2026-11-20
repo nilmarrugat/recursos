@@ -46,6 +46,8 @@ h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,7.6vw,96px);
 .alta button{font:700 16px Inter,sans-serif;background:var(--naranja);color:#fff;border:0;border-radius:999px;padding:12px 22px;cursor:pointer;white-space:nowrap;transition:background .15s,transform .1s}
 .alta button:hover{background:#cf5f12}
 .alta button:active{transform:scale(.97)}
+.alta-pregunta{display:block;font-family:"Cal Sans";font-size:20px;margin:0 0 10px 4px}
+.cierre .alta-pregunta{color:#FFF3E2}
 .alta small{display:block;margin-top:10px;font-size:13.5px;line-height:1.5;color:var(--gris);padding-left:16px}
 .alta .error{color:#B3261E;font-size:14px;margin-top:8px;padding-left:16px}
 @media(max-width:420px){.alta-fila{flex-direction:column;border-radius:18px}.alta button{width:100%}}
@@ -153,12 +155,13 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
         <span class="firma">y qué no</span>
         <p class="entradilla">Te paso la web con la que ordeno mis apuntes como los mira quien me corrige: lo imprescindible, lo que sube nota y lo que puedo dejar para después. Con tus apuntes y en 10 minutos.</p>
         <form class="alta" data-alta novalidate>
+          <label class="alta-pregunta" for="correo-1">¿A qué correo te lo mando?</label>
           <div class="alta-fila">
-            <input type="email" name="email_address" autocomplete="email" placeholder="Tu correo" aria-label="Tu correo" required>
-            <button type="submit">Mándame el mapa</button>
+            <input id="correo-1" type="email" name="email_address" autocomplete="email" inputmode="email" placeholder="El que miras cada día" required>
+            <button type="submit">Envíamelo</button>
           </div>
           <p class="error" hidden>Escribe un correo válido para que te llegue.</p>
-          <small>Te llegará un correo para confirmar. Después, uno a la semana con la newsletter de TMV. Te das de baja con un clic.</small>
+          <small>Pon el que abres de verdad: el mapa solo se abre desde el botón del correo que te llega. Después, un correo a la semana con la newsletter de TMV; te das de baja con un clic.</small>
         </form>
         <div class="dato-portada"><b>8,8</b> de media en 1.º de bachillerato. Mis boletines, más abajo.</div>
       </div>
@@ -223,14 +226,14 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
 
   <div class="cierre">
     <h2>Deja de estudiarlo todo por si acaso</h2>
-    <p class="sub">Te mando el mapa ahora. Confirma el correo y se te abre.</p>
+    <p class="sub">Dime a qué correo te lo mando, confírmalo y se te abre.</p>
     <form class="alta" data-alta novalidate>
       <div class="alta-fila">
-        <input type="email" name="email_address" autocomplete="email" placeholder="Tu correo" aria-label="Tu correo" required>
-        <button type="submit">Mándame el mapa</button>
+        <input type="email" name="email_address" autocomplete="email" inputmode="email" placeholder="El correo que miras cada día" aria-label="Tu correo" required>
+        <button type="submit">Envíamelo</button>
       </div>
       <p class="error" hidden>Escribe un correo válido para que te llegue.</p>
-      <small>Un correo a la semana. Te das de baja con un clic.</small>
+      <small>El mapa se abre desde el correo que te llega. Después, uno a la semana; te das de baja con un clic.</small>
     </form>
   </div>
 </div>
