@@ -18,7 +18,8 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+html{overflow-x:clip}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:6px}
@@ -55,6 +56,13 @@ h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,7.6vw,96px);
 .dato-portada b{font-family:"Archivo Black";font-weight:400;font-size:28px;letter-spacing:-.05em;color:var(--naranja)}
 
 section{padding:64px 0;border-top:1px solid var(--linea)}
+/* calidez: pozos de luz de lámpara que se alternan de lado por sección */
+.envoltura>section{position:relative;isolation:isolate}
+.envoltura>section::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:min(820px,120vw);aspect-ratio:1;top:-120px;background:radial-gradient(closest-side,rgba(248,192,67,.20),rgba(235,112,24,.07) 55%,transparent 78%)}
+.envoltura>section:nth-of-type(odd)::before{left:-260px}
+.envoltura>section:nth-of-type(even)::before{right:-260px}
+.paso,.curso{box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -26px rgba(120,60,15,.45)}
+
 h2{font-family:"Cal Sans";font-weight:400;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-.01em;margin-bottom:18px}
 h3{font-family:"Cal Sans";font-weight:400;font-size:21px;line-height:1.2;margin-bottom:6px}
 .sub{color:var(--texto);max-width:56ch}
