@@ -9,6 +9,7 @@ Repositorio de las webs de captación de Nil Marrugat (TMV | Tu Mejor Versión).
 <palabra>/<ruta-oculta>/    la web del imán, a la que solo se llega al confirmar el correo
 <palabra>/img/              imágenes de ese imán
 _base/                      plantilla maestra de landing (cuando exista): se reutiliza y solo cambia lo del imán
+_plantillas/correo-confirmacion.md   correo de confirmación de Kit (genérico, dos huecos por imán)
 ```
 
 - La **landing** es casi siempre la misma: cambian el titular, la promesa, el visual y la palabra clave. Se parte de `_base/`.
