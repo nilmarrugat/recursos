@@ -11,9 +11,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cal+Sans&family=Inter:wght@400;500;700&family=Mr+Dafoe&display=swap" rel="stylesheet">
 <style>
 :root{
-  --papel:#FAFAF8; --tinta:#111111; --gris:#5E5E5A; --linea:#E4E2DC;
+  --papel:#F7EFE3; --tinta:#2B1D14; --gris:#7C6857; --linea:#E9DBC7; --texto:#4A3829; --brasa:#3A2416;
   --naranja:#EB7018; --fluor:#F8C043; --verde:#2CA74B; --azul:#2F80ED;
-  --tarjeta:#FFFFFF;
+  --tarjeta:#FFFAF2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -33,16 +33,17 @@ h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,8.4vw,104px)
 .firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(44px,7vw,84px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-6px 0 0 4px}
 .portada{display:grid;gap:40px;grid-template-columns:1fr}
 @media(min-width:980px){.portada{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center}}
-.apuntes{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 22px 50px -28px rgba(17,17,17,.35);padding:22px 22px 18px 64px;position:relative;transform:rotate(1.2deg);max-width:470px;justify-self:center;width:100%}
+.apuntes{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 22px 50px -28px rgba(90,48,16,.38);padding:22px 22px 18px 64px;position:relative;transform:rotate(1.2deg);max-width:470px;justify-self:center;width:100%}
 .apuntes::before{content:"";position:absolute;left:48px;top:0;bottom:0;width:1.5px;background:#F2B9A0}
 .apuntes h4{font-family:"Cal Sans";font-weight:400;font-size:19px;margin-bottom:10px}
-.ap{position:relative;font-size:15px;line-height:1.45;padding:7px 0;border-bottom:1px dashed var(--linea);color:#2a2a28}
+.ap{position:relative;font-size:15px;line-height:1.45;padding:7px 0;border-bottom:1px dashed var(--linea);color:var(--texto)}
 .ap:last-child{border-bottom:0}
 .ap i{position:absolute;left:-52px;top:2px;width:32px;height:32px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font:400 18px "Cal Sans";font-style:normal}
 .ap.a i{color:var(--naranja)} .ap.b i{color:#C9921B} .ap.c i{color:var(--verde)} .ap.x i{color:var(--gris)}
 .ap.x{color:#9a9993}
 .ap small{display:block;font-size:12.5px;color:var(--gris);text-decoration:none}
-.entradilla{max-width:56ch;margin-top:26px;font-size:19px;color:#2a2a28}
+.portada .firma{margin-top:-9px}
+.entradilla{max-width:56ch;margin-top:26px;font-size:19px;color:var(--texto)}
 .notas{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
 .nota{display:flex;align-items:center;gap:10px;background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:10px 14px 10px 10px;font-size:15px}
 .nota b{font-family:"Cal Sans";font-weight:400;font-size:22px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid currentColor}
@@ -55,7 +56,7 @@ h3{font-family:"Cal Sans";font-weight:400;font-size:21px;line-height:1.2;margin-
 .pasos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));counter-reset:p}
 .paso{background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:22px;position:relative}
 .paso::before{counter-increment:p;content:counter(p);font-family:"Archivo Black";font-size:44px;line-height:1;letter-spacing:-.06em;color:var(--naranja);display:block;margin-bottom:12px}
-.paso p{color:#2a2a28;font-size:16px}
+.paso p{color:var(--texto);font-size:16px}
 .paso .clave{margin-top:10px;font-size:15px;color:var(--gris)}
 
 /* Constructor */
@@ -77,13 +78,13 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--tinta)}
 .ayuda{font-size:14px;color:var(--gris);margin-top:6px}
 .ayuda a{color:var(--tinta)}
 
-.hoja{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 18px 40px -24px rgba(17,17,17,.28);overflow:hidden}
+.hoja{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 18px 40px -24px rgba(90,48,16,.30);overflow:hidden}
 .hoja-cab{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--linea)}
 .hoja-cab span{font-family:"Cal Sans";font-size:19px}
 .copiar{font:700 15px Inter,sans-serif;background:var(--naranja);color:#fff;border:0;border-radius:999px;padding:11px 20px;cursor:pointer;white-space:nowrap}
 .copiar:hover{background:#d4620f}
 .copiar.ok{background:var(--verde)}
-pre{font:400 14px/1.65 Inter,sans-serif;white-space:pre-wrap;word-break:break-word;padding:20px 20px 24px;max-height:68vh;overflow:auto;color:#2a2a28}
+pre{font:400 14px/1.65 Inter,sans-serif;white-space:pre-wrap;word-break:break-word;padding:20px 20px 24px;max-height:68vh;overflow:auto;color:var(--texto)}
 mark{background:linear-gradient(transparent 12%,rgba(248,192,67,.75) 12%,rgba(248,192,67,.75) 88%,transparent 88%);color:var(--tinta);padding:0 2px;border-radius:2px}
 mark.vacio{background:none;color:var(--naranja);font-weight:700}
 .ir{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
@@ -92,17 +93,19 @@ mark.vacio{background:none;color:var(--naranja);font-weight:700}
 
 /* Cierre */
 .cierre{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.cierre p{color:#2a2a28;max-width:52ch}
+.cierre p{color:var(--texto);max-width:52ch}
 .boton-ig{display:inline-block;margin-top:16px;font-weight:700;text-decoration:none;background:var(--tinta);color:#fff;border-radius:999px;padding:12px 22px}
-.siguiente{background:var(--tinta);color:#fff;border-radius:22px;padding:28px}
+.siguiente{background:radial-gradient(120% 90% at 100% 100%,rgba(235,112,24,.28),transparent 60%),var(--brasa);color:#fff;border-radius:22px;padding:28px}
 .siguiente h3{color:#fff}
-.siguiente p{color:#d9d8d2}
+.siguiente p{color:#E8D6C2}
 .siguiente .firma{font-size:44px;margin:8px 0 0}
 
 /* La prueba */
-.prueba-intro{display:grid;gap:28px;grid-template-columns:1fr;align-items:end;margin-bottom:30px}
+.prueba-intro{display:grid;gap:28px;grid-template-columns:1fr;margin-bottom:30px}
+.prueba-intro>div{display:flex;flex-direction:column}
+@media(min-width:980px){.prueba-intro{align-items:stretch}.prueba-intro>div{justify-content:space-between}.prueba-intro h2{margin-top:-4px}}
 @media(min-width:980px){.prueba-intro{grid-template-columns:minmax(0,1fr) minmax(0,.8fr)}}
-.prueba-intro p{color:#2a2a28;max-width:54ch}
+.prueba-intro p{color:var(--texto);max-width:54ch}
 .foto{margin:0;border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#EFEDE7}
 .foto img{width:100%;height:100%;object-fit:cover;display:block}
 .cursos{display:grid;gap:12px;grid-template-columns:repeat(5,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px}
@@ -111,7 +114,7 @@ mark.vacio{background:none;color:var(--naranja);font-weight:700}
 .curso .nombre{font-family:"Cal Sans";font-size:20px;line-height:1.1}
 .curso .anyo{font-size:13px;color:var(--gris)}
 .puntos{display:flex;flex-wrap:wrap;gap:5px}
-.puntos span{width:14px;height:14px;border-radius:50%;background:#D8D6CF}
+.puntos span{width:14px;height:14px;border-radius:50%;background:#DCCDB8}
 .puntos .n{background:var(--fluor)} .puntos .e{background:var(--naranja)}
 .dato{font-family:"Archivo Black";font-size:30px;letter-spacing:-.05em;line-height:1}
 .dato small{display:block;font-family:Inter;font-size:13px;letter-spacing:0;color:var(--gris);margin-top:6px;font-weight:400}
@@ -119,7 +122,7 @@ mark.vacio{background:none;color:var(--naranja);font-weight:700}
 .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--gris);margin-top:6px}
 .leyenda i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
 dialog{margin:auto;border:0;padding:0;max-width:min(980px,96vw);width:100%;max-height:92vh;border-radius:20px;background:var(--papel);color:var(--tinta)}
-dialog::backdrop{background:rgba(17,17,17,.72)}
+dialog::backdrop{background:rgba(43,29,20,.78)}
 .dlg-cab{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--papel);border-bottom:1px solid var(--linea);z-index:1}
 .dlg-cab b{font-family:"Cal Sans";font-weight:400;font-size:20px}
 .cerrar{font:700 15px Inter;background:var(--tinta);color:#fff;border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
@@ -129,16 +132,21 @@ dialog::backdrop{background:rgba(17,17,17,.72)}
 .ap i{border:0!important}
 .ap i svg{position:absolute;inset:-3px;width:38px;height:38px;overflow:visible}
 .ap i circle{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:110;stroke-dashoffset:110;animation:trazo .55s ease-out forwards}
-.ap.x .tachon{position:absolute;left:0;top:50%;height:2px;width:0;background:rgba(17,17,17,.55);animation:tachar .45s ease-out forwards}
+.ap.x .tach{position:relative;display:inline-block}
+.ap.x .tach::after{content:"";position:absolute;left:0;top:52%;height:2px;width:0;border-radius:2px;background:rgba(43,29,20,.6);animation:tachar .45s ease-out 2.5s forwards}
 .ap.x{text-decoration:none}
 .ap:nth-of-type(2) circle{animation-delay:.5s}.ap:nth-of-type(3) circle{animation-delay:.9s}.ap:nth-of-type(4) circle{animation-delay:1.3s}.ap:nth-of-type(5) circle{animation-delay:1.7s}.ap:nth-of-type(6) circle{animation-delay:2.1s}
-.ap.x .tachon{animation-delay:2.5s}
 .ap.a span{background-size:0% 100%;background-repeat:no-repeat;background-image:linear-gradient(transparent 55%,rgba(248,192,67,.7) 55%);animation:fluor .5s ease-out forwards}
 .ap:nth-of-type(2) span{animation-delay:.35s}.ap:nth-of-type(3) span{animation-delay:.75s}
 @keyframes trazo{to{stroke-dashoffset:0}}
-@keyframes tachar{to{width:62%}}
+@keyframes tachar{to{width:100%}}
 @keyframes fluor{to{background-size:100% 100%}}
-@media(prefers-reduced-motion:reduce){.ap i circle{animation:none;stroke-dashoffset:0}.ap.x .tachon{animation:none;width:62%}.ap.a span{animation:none;background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.ap i circle{animation:none;stroke-dashoffset:0}.ap.x .tach::after{animation:none;width:100%}.ap.a span{animation:none;background-size:100% 100%}}
+
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+.portada{position:relative}
+.portada::before{content:"";position:absolute;right:-8%;top:-10%;width:70%;height:120%;pointer-events:none;background:radial-gradient(closest-side,rgba(248,192,67,.22),rgba(235,112,24,.08) 55%,transparent 75%);z-index:-1}
+.copiar:hover{background:#cf5f12}
 footer{padding:36px 0 50px;color:var(--gris);font-size:14px;border-top:1px solid var(--linea)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -162,7 +170,7 @@ footer{padding:36px 0 50px;color:var(--gris);font-size:14px;border-top:1px solid
         <div class="ap a"><i>A<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span>Constitución de 1876</span><small>En criterios de la PAU</small></div>
         <div class="ap b"><i>B<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i>Regencia de María Cristina<small>Énfasis en tus apuntes</small></div>
         <div class="ap c"><i>C<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i>Regionalismos y movimiento obrero<small>Inferencia de la IA</small></div>
-        <div class="ap x"><span class="tachon" aria-hidden="true"></span><i>X<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i>Fechas de cada gobierno<small>«Esto no lo voy a preguntar»</small></div>
+        <div class="ap x"><i>X<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span class="tach">Fechas de cada gobierno</span><small>«Esto no lo voy a preguntar»</small></div>
       </div>
     </div>
 
@@ -170,9 +178,9 @@ footer{padding:36px 0 50px;color:var(--gris);font-size:14px;border-top:1px solid
     <section aria-labelledby="t-prueba">
       <div class="prueba-intro">
         <div>
-          <h2 id="t-prueba">No siempre saqué estas notas</h2>
+          <h2 id="t-prueba">No siempre saqué estas notas…</h2>
           <p>En 1.º y 2.º de ESO era el de los notables, con algún aprobado justo en Mates y en Inglés. No me faltaban horas: me faltaba saber qué estudiar primero. Cuando empecé a mirar mis apuntes como los mira quien corrige, cambió todo. Aquí están mis boletines de verdad. Toca un curso para verlo entero, con los comentarios de los profes.</p>
-          <div class="leyenda"><span><i style="background:#D8D6CF"></i>Satisfactorio</span><span><i style="background:var(--fluor)"></i>Notable</span><span><i style="background:var(--naranja)"></i>Excelente</span></div>
+          <div class="leyenda"><span><i style="background:#DCCDB8"></i>Satisfactorio</span><span><i style="background:var(--fluor)"></i>Notable</span><span><i style="background:var(--naranja)"></i>Excelente</span></div>
         </div>
         <figure class="foto" id="foto"><img src="img/foto.jpg" alt="Nil estudiando en su escritorio de noche" onerror="document.getElementById('foto').hidden=true"></figure>
       </div>
