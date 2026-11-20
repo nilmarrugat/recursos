@@ -60,6 +60,7 @@ h3{font-family:"Cal Sans";font-weight:400;font-size:21px;line-height:1.2;margin-
 .sub{color:var(--texto);max-width:56ch}
 
 /* Escena con scroll */
+html{scrollbar-color:#D9C6AE #F7EFE3}html.oscuro{scrollbar-color:#6B5442 #3A2416}
 .escena{height:360vh;position:relative;border-top:0;padding:0}
 .escena-fija{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;background:var(--brasa)}
 .escena-lienzo{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -308,6 +309,7 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
     if(quieto){ dibujar(N-1); return; }
     var r=esc.getBoundingClientRect(), total=esc.offsetHeight-window.innerHeight;
     var p=clamp(-r.top/total);
+    document.documentElement.classList.toggle('oscuro', r.top<window.innerHeight*0.5 && r.bottom>window.innerHeight*0.5);
     dibujar(Math.round(clamp(p/0.72)*(N-1)));
     txt.style.opacity=(1-clamp((p-0.18)/0.16)).toFixed(2);
     txt.style.transform='translateY('+(-p*40).toFixed(1)+'px)';
