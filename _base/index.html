@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- PLANTILLA BASE DE LANDING (copia de /80/, aprobada el 20-nov-2026). Copia esta carpeta a /<palabra>/ y cambia SOLO lo marcado con CAMBIA. Guía: _base/LEEME.md -->
+<!-- CAMBIA: título, og:title, og:description, og:image (ruta /<palabra>/img/portada.jpg) -->
+<title>Qué te puedes saltar de este tema (y qué no) · TMV</title>
+<meta name="description" content="Una web gratuita que ordena tus apuntes como los mira quien te corrige: A, B, C y X. En 10 minutos.">
+<meta property="og:title" content="Qué te puedes saltar de este tema (y qué no)">
+<meta property="og:description" content="Ordena tus apuntes como los mira quien te corrige. Gratis, en 10 minutos.">
+<meta property="og:image" content="https://recursos.nilmarrugat.com/80/img/portada.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cal+Sans&family=Inter:wght@400;500;700&family=Mr+Dafoe&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F7EFE3; --tinta:#2B1D14; --texto:#4A3829; --gris:#7C6857; --linea:#E9DBC7;
+  --tarjeta:#FFFAF2; --brasa:#3A2416; --naranja:#EB7018; --fluor:#F8C043; --verde:#2CA74B; --azul:#2F80ED;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+html{overflow-x:clip}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:6px}
+.envoltura{max-width:1180px;margin:0 auto;padding:0 22px}
+.barra{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.marca{font-family:"Archivo Black";font-size:15px;letter-spacing:-.03em;text-decoration:none}
+.marca span{color:var(--naranja)}
+.barra small{font-size:14px;color:var(--gris)}
+
+/* Portada */
+.portada{display:grid;gap:44px;grid-template-columns:1fr;padding:36px 0 64px;position:relative}
+@media(min-width:980px){.portada{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center}}
+.portada::before{content:"";position:absolute;right:-8%;top:-6%;width:70%;height:115%;pointer-events:none;background:radial-gradient(closest-side,rgba(248,192,67,.22),rgba(235,112,24,.08) 55%,transparent 75%);z-index:-1}
+h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,7.6vw,96px);line-height:.92;letter-spacing:-.07em;max-width:13ch}
+.firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(44px,6.6vw,80px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-10px 0 0 4px}
+.entradilla{max-width:46ch;margin-top:22px;font-size:19px;color:var(--texto)}
+.foto-portada{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px -30px rgba(90,48,16,.55);transform:rotate(1deg)}
+.foto-portada img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Formulario */
+.alta{margin-top:28px;max-width:470px}
+.alta-fila{display:flex;gap:8px;background:var(--tarjeta);border:1.5px solid var(--linea);border-radius:999px;padding:6px;transition:border-color .2s}
+.alta-fila:focus-within{border-color:var(--tinta)}
+.alta input{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--tinta);background:transparent;border:0;padding:10px 14px;outline:none}
+.alta button{font:700 16px Inter,sans-serif;background:var(--naranja);color:#fff;border:0;border-radius:999px;padding:12px 22px;cursor:pointer;white-space:nowrap;transition:background .15s,transform .1s}
+.alta button:hover{background:#cf5f12}
+.alta button:active{transform:scale(.97)}
+.alta-pregunta{display:block;font-family:"Cal Sans";font-size:20px;margin:0 0 10px 4px}
+.cierre .alta-pregunta{color:#FFF3E2}
+.alta small{display:block;margin-top:10px;font-size:13.5px;line-height:1.5;color:var(--gris);padding-left:16px}
+.alta .error{color:#B3261E;font-size:14px;margin-top:8px;padding-left:16px}
+@media(max-width:420px){.alta-fila{flex-direction:column;border-radius:18px}.alta button{width:100%}}
+.dato-portada{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:15px;color:var(--texto)}
+.dato-portada b{font-family:"Archivo Black";font-weight:400;font-size:28px;letter-spacing:-.05em;color:var(--naranja)}
+
+section{padding:64px 0;border-top:1px solid var(--linea)}
+/* calidez: pozos de luz de lámpara que se alternan de lado por sección */
+.envoltura>section{position:relative;isolation:isolate}
+.envoltura>section::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:min(820px,120vw);aspect-ratio:1;top:-120px;background:radial-gradient(closest-side,rgba(248,192,67,.20),rgba(235,112,24,.07) 55%,transparent 78%)}
+.envoltura>section:nth-of-type(odd)::before{left:-260px}
+.envoltura>section:nth-of-type(even)::before{right:-260px}
+.paso,.curso{box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -26px rgba(120,60,15,.45)}
+
+h2{font-family:"Cal Sans";font-weight:400;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-.01em;margin-bottom:18px}
+h3{font-family:"Cal Sans";font-weight:400;font-size:21px;line-height:1.2;margin-bottom:6px}
+.sub{color:var(--texto);max-width:56ch}
+
+/* Escena con scroll */
+html{scrollbar-color:#D9C6AE #F7EFE3}html.oscuro{scrollbar-color:#6B5442 #3A2416}
+.escena{height:360vh;position:relative;border-top:0;padding:0}
+.escena-fija{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;background:var(--brasa)}
+.escena-lienzo{position:absolute;inset:0;width:100%;height:100%;display:block}
+.escena-ambiente{position:absolute;left:-10%;top:-10%;width:120%;height:120%;display:none;filter:blur(36px) brightness(.62) saturate(1.15)}
+.escena-velo{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 100%,rgba(43,29,20,.0),rgba(43,29,20,.55));pointer-events:none}
+.escena-texto{position:absolute;left:0;right:0;top:12vh;text-align:center;color:#FFF3E2;padding:0 22px;will-change:opacity,transform}
+.escena-texto p{font-family:"Cal Sans";font-size:clamp(24px,3.4vw,40px);line-height:1.15;max-width:22ch;margin:0 auto;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.hoja{position:relative;width:min(470px,88vw);background:var(--tarjeta);border-radius:20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);padding:22px 22px 18px 64px;opacity:0;transform:translateY(40px);will-change:opacity,transform}
+.hoja::before{content:"";position:absolute;left:48px;top:0;bottom:0;width:1.5px;background:#F2B9A0}
+.hoja h4{font-family:"Cal Sans";font-weight:400;font-size:19px;margin-bottom:10px}
+.ap{position:relative;font-size:15px;line-height:1.45;padding:7px 0;border-bottom:1px dashed var(--linea);color:var(--texto)}
+.ap:last-child{border-bottom:0}
+.ap i{position:absolute;left:-52px;top:2px;width:32px;height:32px;display:grid;place-items:center;font:400 18px "Cal Sans";font-style:normal}
+.ap i svg{position:absolute;inset:-3px;width:38px;height:38px;overflow:visible}
+.ap i circle{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:110;stroke-dashoffset:110;transition:stroke-dashoffset .55s ease-out}
+.ap small{display:block;font-size:12.5px;color:var(--gris)}
+.ap.a i{color:var(--naranja)} .ap.b i{color:#C9921B} .ap.c i{color:var(--verde)} .ap.x i{color:var(--gris)}
+.ap.x{color:#9a8b7d}
+.ap.a span{background-image:linear-gradient(transparent 55%,rgba(248,192,67,.7) 55%);background-repeat:no-repeat;background-size:0% 100%;transition:background-size .5s ease-out}
+.ap.x .tach{position:relative;display:inline-block}
+.ap.x .tach::after{content:"";position:absolute;left:0;top:52%;height:2px;width:0;border-radius:2px;background:rgba(43,29,20,.6);transition:width .45s ease-out}
+.hoja.marcada .ap i circle{stroke-dashoffset:0}
+.hoja.marcada .ap.a span{background-size:100% 100%}
+.hoja.marcada .ap.x .tach::after{width:100%}
+.hoja.marcada .ap:nth-of-type(2) circle,.hoja.marcada .ap:nth-of-type(2) span{transition-delay:.35s}
+.hoja.marcada .ap:nth-of-type(3) circle{transition-delay:.7s}
+.hoja.marcada .ap:nth-of-type(4) circle{transition-delay:1.05s}
+.hoja.marcada .ap:nth-of-type(5) circle{transition-delay:1.4s}
+.hoja.marcada .ap.x .tach::after{transition-delay:1.8s}
+
+/* Cómo funciona */
+.pasos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));counter-reset:p;margin-top:26px}
+.paso{background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:22px}
+.paso::before{counter-increment:p;content:counter(p);font-family:"Archivo Black";font-size:44px;line-height:1;letter-spacing:-.06em;color:var(--naranja);display:block;margin-bottom:12px}
+.paso p{color:var(--texto);font-size:16px}
+
+/* Prueba */
+.prueba-intro{margin-bottom:28px}
+.prueba-intro p{color:var(--texto);max-width:58ch}
+.cursos{display:grid;gap:12px;grid-template-columns:repeat(5,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px}
+.curso{scroll-snap-align:start;text-align:left;font:inherit;color:inherit;background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,transform .15s}
+.curso:hover{border-color:var(--tinta);transform:translateY(-2px)}
+.curso:active{transform:scale(.98)}
+.curso .nombre{font-family:"Cal Sans";font-size:20px;line-height:1.1}
+.curso .anyo{font-size:13px;color:var(--gris)}
+.puntos{display:flex;flex-wrap:wrap;gap:5px}
+.puntos i{width:14px;height:14px;border-radius:50%;background:#DCCDB8}
+.puntos .n{background:var(--fluor)} .puntos .e{background:var(--naranja)}
+.dato{font-family:"Archivo Black";font-size:30px;letter-spacing:-.05em;line-height:1}
+.dato small{display:block;font-family:Inter;font-size:13px;letter-spacing:0;color:var(--gris);margin-top:6px;font-weight:400}
+.curso .ver{font-size:14px;font-weight:700;margin-top:auto;text-decoration:underline;text-underline-offset:3px}
+.leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--gris);margin-top:12px}
+.leyenda i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+dialog{margin:auto;border:0;padding:0;max-width:min(980px,96vw);width:100%;max-height:92vh;border-radius:20px;background:var(--papel);color:var(--tinta)}
+dialog::backdrop{background:rgba(43,29,20,.78)}
+.dlg-cab{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--papel);border-bottom:1px solid var(--linea);z-index:1}
+.dlg-cab b{font-family:"Cal Sans";font-weight:400;font-size:20px}
+.cerrar{font:700 15px Inter;background:var(--tinta);color:#fff;border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
+.dlg-cuerpo{padding:16px;display:grid;gap:14px}
+.dlg-cuerpo img{width:100%;height:auto;border-radius:10px;border:1px solid var(--linea);background:#fff}
+
+/* Preguntas */
+.preguntas{max-width:760px}
+details{border-bottom:1px solid var(--linea);padding:18px 0}
+summary{cursor:pointer;list-style:none;font-family:"Cal Sans";font-size:20px;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--naranja);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:10px;color:var(--texto);max-width:62ch}
+
+/* Cierre */
+.cierre{background:radial-gradient(120% 90% at 100% 100%,rgba(235,112,24,.17),transparent 60%),var(--brasa);color:#FFF3E2;border-radius:26px;padding:clamp(28px,5vw,56px);margin:64px 0}
+.cierre h2{color:#FFF3E2}
+.cierre .sub{color:#E8D6C2}
+.cierre .alta-fila{background:#4A3020;border-color:#5C3D29}
+.cierre .alta input{color:#FFF3E2}
+.cierre .alta input::placeholder{color:#C8AE95}
+.cierre .alta small{color:#C8AE95}
+footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-top:1px solid var(--linea)}
+@media(prefers-reduced-motion:reduce){.escena{height:auto}.escena-fija{position:relative;height:auto;padding:80px 0}.hoja{opacity:1;transform:none}.escena-texto{position:relative;top:auto;margin-bottom:24px}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="envoltura">
+  <header class="barra">
+    <a class="marca" href="https://www.instagram.com/tmv_podcast/">TMV <span>|</span> Tu Mejor Versión</a>
+    <small>Recurso gratuito</small>
+  </header>
+
+  <main>
+    <div class="portada">
+      <div>
+        <!-- CAMBIA: titular (promesa concreta, ≤ 8 palabras) + firma en script (2-3 palabras, minúsculas) -->
+        <h1>Qué te puedes saltar de este tema</h1>
+        <span class="firma">y qué no</span>
+        <!-- CAMBIA: entradilla (qué es, para qué y cuánto tarda). Nombra el recurso igual que en el correo de Kit -->
+        <p class="entradilla">Te paso la web con la que ordeno mis apuntes como los mira quien me corrige: lo imprescindible, lo que sube nota y lo que puedo dejar para después. Con tus apuntes y en 10 minutos.</p>
+        <form class="alta" data-alta novalidate>
+          <label class="alta-pregunta" for="correo-1">¿A qué correo te lo mando?</label>
+          <div class="alta-fila">
+            <input id="correo-1" type="email" name="email_address" autocomplete="email" inputmode="email" placeholder="El que miras cada día" required>
+            <button type="submit">Envíamelo</button>
+          </div>
+          <p class="error" hidden>Escribe un correo válido para que te llegue.</p>
+          <!-- CAMBIA: "el mapa" por el nombre corto del recurso -->
+          <small>Pon el que abres de verdad: el mapa solo se abre desde el botón del correo que te llega. Después, un correo a la semana con la newsletter de TMV; te das de baja con un clic.</small>
+        </form>
+        <!-- CAMBIA: dato real de autoridad del pilar (nunca inventado) -->
+        <div class="dato-portada"><b>8,8</b> de media en 1.º de bachillerato. Mis boletines, más abajo.</div>
+      </div>
+      <!-- CAMBIA: foto de portada propia (prompt en 1.ª persona a ChatGPT; entorno distinto al de la escena) -->
+      <figure class="foto-portada"><img src="img/portada.jpg" alt="Nil en una biblioteca con su hoja de apuntes marcada" width="1400" height="1050"></figure>
+    </div>
+  </main>
+</div>
+
+<!-- CAMBIA o QUITA: momento animado protagonista (uno por página). En el 80: vídeo de Kling que avanza con el scroll + ficha que se marca. Ver LEEME § Escena -->
+<section class="escena" aria-label="Qué hace la web">
+  <div class="escena-fija">
+    <canvas class="escena-ambiente" width="48" height="30" aria-hidden="true"></canvas><canvas class="escena-lienzo" aria-hidden="true"></canvas>
+    <div class="escena-velo" aria-hidden="true"></div>
+    <div class="escena-texto"><p>Tus apuntes, leídos como los lee quien te corrige.</p></div>
+    <div class="hoja" aria-label="Ejemplo de apuntes ordenados">
+      <h4>Tema 4 · La Restauración</h4>
+      <div class="ap a"><i>A<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span>Turno pacífico y caciquismo</span><small>Dicho por el profe</small></div>
+      <div class="ap a"><i>A<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span>Constitución de 1876</span><small>En criterios de la PAU</small></div>
+      <div class="ap b"><i>B<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i>Regencia de María Cristina<small>Énfasis en tus apuntes</small></div>
+      <div class="ap c"><i>C<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i>Regionalismos y movimiento obrero<small>Inferencia de la IA</small></div>
+      <div class="ap x"><i>X<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span class="tach">Fechas de cada gobierno</span><small>«Esto no lo voy a preguntar»</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="envoltura">
+  <!-- CAMBIA: los 3 pasos reales de uso del imán -->
+  <section aria-labelledby="t-como">
+    <h2 id="t-como">Cómo funciona</h2>
+    <p class="sub">No te doy apuntes hechos. Te doy la forma de ordenar los tuyos, con lo que ha dicho tu profe y la nota que necesitas.</p>
+    <div class="pasos">
+      <div class="paso"><h3>Rellenas tu caso</h3><p>Qué entra, lo que ha dicho tu profe, la nota que necesitas y las horas que tienes.</p></div>
+      <div class="paso"><h3>Copias tu prompt</h3><p>La web te lo monta a medida. Lo pegas en ChatGPT, Gemini o NotebookLM junto a tus apuntes. La versión gratis basta.</p></div>
+      <div class="paso"><h3>Empiezas por la A</h3><p>Te devuelve tus apuntes en A, B, C y X, con el porqué de cada cosa. Lo de la X, fuera.</p></div>
+    </div>
+  </section>
+
+  <!-- CAMBIA: prueba de autoridad del pilar (estudios: boletines; gym: antes y después; contenido: métricas reales). Datos de terceros tapados -->
+  <section aria-labelledby="t-prueba">
+    <div class="prueba-intro">
+      <h2 id="t-prueba">No siempre saqué estas notas…</h2>
+      <p>En 1.º y 2.º de ESO era el de los notables, con algún aprobado justo en Mates y en Inglés. No me faltaban horas: me faltaba saber qué estudiar primero. Cuando empecé a mirar mis apuntes como los mira quien corrige, cambió todo. Toca un curso para ver el boletín entero, con los comentarios de los profes.</p>
+      <div class="leyenda"><span><i style="background:#DCCDB8"></i>Satisfactorio</span><span><i style="background:var(--fluor)"></i>Notable</span><span><i style="background:var(--naranja)"></i>Excelente</span></div>
+    </div>
+    <div class="cursos">
+        <button class="curso" data-curso="1eso" data-titulo="1.º de ESO · 2021-22" data-imgs="1eso-1,1eso-2"><span><span class="nombre">1.º de ESO</span><br><span class="anyo">2021-22</span></span><span class="puntos">SSN NNN NNN NEE E</span><span class="dato">3 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="2eso" data-titulo="2.º de ESO · 2022-23" data-imgs="2eso-1"><span><span class="nombre">2.º de ESO</span><br><span class="anyo">2022-23</span></span><span class="puntos">SNN NNN NNN NEE E</span><span class="dato">3 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="3eso" data-titulo="3.º de ESO · 2023-24" data-imgs="3eso-1"><span><span class="nombre">3.º de ESO</span><br><span class="anyo">2023-24</span></span><span class="puntos">NNE EEE EEE EEE E</span><span class="dato">11 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="4eso" data-titulo="4.º de ESO · 2024-25" data-imgs="4eso-1,4eso-2,4eso-3"><span><span class="nombre">4.º de ESO</span><br><span class="anyo">2024-25</span></span><span class="puntos">NNN NEE EEE EE</span><span class="dato">7 de 11<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="1bach" data-titulo="1.º de bachillerato · 2025-26" data-imgs="1bach-1"><span><span class="nombre">1.º de bachillerato</span><br><span class="anyo">2025-26</span></span><span class="puntos">NNN NNE EEE E</span><span class="dato">8,8<small>de media final</small></span><span class="ver">Ver boletín</span></button>
+      </div>
+      <dialog id="dlg" aria-labelledby="dlg-t"><div class="dlg-cab"><b id="dlg-t"></b><button class="cerrar" type="button" id="cerrar">Cerrar</button></div><div class="dlg-cuerpo" id="dlg-c"></div></dialog>
+  </section>
+
+  <!-- CAMBIA: 4-6 dudas reales del público (spam y precio se mantienen) -->
+  <section aria-labelledby="t-dudas">
+    <h2 id="t-dudas">Antes de que lo preguntes</h2>
+    <div class="preguntas">
+      <details><summary>¿Me vas a llenar el correo de spam?</summary><p>No. Un correo para confirmar y, después, uno a la semana con la newsletter de TMV. Si no te aporta, te das de baja con un clic en cualquiera.</p></details>
+      <details><summary>¿Funciona con mis apuntes?</summary><p>Sí. PDF, fotos o texto, como los tengas. Si tus apuntes están en catalán, la respuesta te sale en catalán.</p></details>
+      <details><summary>No tengo tiempo ahora mismo</summary><p>Son 10 minutos. Y justamente sirve para eso: dejar de gastar horas en lo que no te van a preguntar.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Nada. Y para usarlo te basta con la versión gratuita de ChatGPT, Gemini o NotebookLM.</p></details>
+      <details><summary>¿Sirve para la PAU o solo para el instituto?</summary><p>Para las dos. Para el instituto pesa más lo que dice tu profe; para la PAU, los criterios de corrección y los exámenes de otros años.</p></details>
+    </div>
+  </section>
+
+  <!-- CAMBIA: titular del cierre (lo que dejan de hacer) y "El mapa" del texto pequeño -->
+  <div class="cierre">
+    <h2>Deja de estudiarlo todo por si acaso</h2>
+    <p class="sub">Dime a qué correo te lo mando, confírmalo y se te abre.</p>
+    <form class="alta" data-alta novalidate>
+      <div class="alta-fila">
+        <input type="email" name="email_address" autocomplete="email" inputmode="email" placeholder="El correo que miras cada día" aria-label="Tu correo" required>
+        <button type="submit">Envíamelo</button>
+      </div>
+      <p class="error" hidden>Escribe un correo válido para que te llegue.</p>
+      <small>El mapa se abre desde el correo que te llega. Después, uno a la semana; te das de baja con un clic.</small>
+    </form>
+  </div>
+</div>
+
+<footer>TMV | Tu Mejor Versión · Hecho por Nil Marrugat</footer>
+
+<script>
+(function(){
+  /* puntos de notas */
+  document.querySelectorAll('.puntos').forEach(function(p){
+    var t=p.textContent.replace(/\s/g,''); p.textContent=''; p.setAttribute('aria-hidden','true');
+    for(var i=0;i<t.length;i++){var d=document.createElement('i'); d.className=t[i]==='E'?'e':(t[i]==='N'?'n':''); p.appendChild(d);}
+  });
+
+
+  var dlg=document.getElementById('dlg'), dc=document.getElementById('dlg-c'), dt=document.getElementById('dlg-t');
+  document.querySelectorAll('.curso').forEach(function(b){
+    b.addEventListener('click',function(){
+      dt.textContent=b.dataset.titulo; dc.innerHTML='';
+      b.dataset.imgs.split(',').forEach(function(n,i){var im=document.createElement('img'); im.src='img/'+n+'.jpg'; im.alt='Boletín de '+b.dataset.titulo+', página '+(i+1); dc.appendChild(im);});
+      if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+    });
+  });
+  document.getElementById('cerrar').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+
+  /* formulario: Kit */
+  /* CAMBIA: id del formulario de Kit de este imán */
+  var KIT_FORM_ID='10219237';
+  document.querySelectorAll('[data-alta]').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      var input=f.querySelector('input'), err=f.querySelector('.error');
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim())){ e.preventDefault(); err.hidden=false; input.focus(); return; }
+      err.hidden=true;
+      if(!KIT_FORM_ID){ e.preventDefault(); return; }
+      f.action='https://app.kit.com/forms/'+KIT_FORM_ID+'/subscriptions'; f.method='post';
+      f.querySelector('button').textContent='Enviando…';
+    });
+    f.querySelector('input').addEventListener('input',function(){ f.querySelector('.error').hidden=true; });
+  });
+
+  /* escena con scroll: vídeo convertido en fotogramas */
+  var esc=document.querySelector('.escena'), lienzo=document.querySelector('.escena-lienzo'), ctx=lienzo.getContext('2d'), amb=document.querySelector('.escena-ambiente'), actx=amb.getContext('2d'), txt=document.querySelector('.escena-texto'), hoja=document.querySelector('.hoja');
+  var N=121, dx=0, fotos=[], actual=-1, quieto=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function src(i){ return 'img/escena/'+String(i+1).padStart(3,'0')+'.jpg'; }
+  function clamp(v){return Math.max(0,Math.min(1,v));}
+  function medir(){
+    var d=Math.min(window.devicePixelRatio||1,2);
+    lienzo.width=Math.round(lienzo.clientWidth*d); lienzo.height=Math.round(lienzo.clientHeight*d); actual=-1;
+  }
+  function dibujar(i){
+    var im=fotos[i];
+    while(i>0 && !(im && im.complete && im.naturalWidth)){ i--; im=fotos[i]; }
+    if(!im || !im.naturalWidth || i===actual) return;
+    actual=i;
+    var W=lienzo.width, H=lienzo.height, iw=im.naturalWidth, ih=im.naturalHeight;
+    var ancho = W/H >= 0.8;
+    /* móvil: llena la pantalla; portátil: vertical algo ampliado sobre su propio fondo desenfocado */
+    var k = ancho ? H/ih*1.1 : Math.max(W/iw,H/ih);
+    var w=iw*k, h=ih*k, x0=(W-w)/2;
+    ctx.clearRect(0,0,W,H);
+    ctx.drawImage(im,x0,(H-h)/2,w,h);
+    amb.style.display = ancho ? 'block' : 'none';
+    if(ancho){
+      var ka=Math.max(48/iw,30/ih); actx.drawImage(im,(48-iw*ka)/2,(30-ih*ka)/2,iw*ka,ih*ka);
+      /* bordes del vídeo fundidos con el fondo */
+      var f=w*0.2, g;
+      ctx.globalCompositeOperation='destination-out';
+      g=ctx.createLinearGradient(x0,0,x0+f,0); g.addColorStop(0,'#000'); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.fillRect(x0-1,0,f+1,H);
+      g=ctx.createLinearGradient(x0+w-f,0,x0+w,0); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'#000'); ctx.fillStyle=g; ctx.fillRect(x0+w-f,0,f+1,H);
+      ctx.globalCompositeOperation='source-over';
+    }
+    /* papel del último fotograma: x 43–548 de 600 */
+    var css=lienzo.clientWidth/W;
+    dx=(x0 + w*295.5/600 - W/2)*css;
+    hoja.style.width = ancho ? Math.min(470, w*505/600*css*0.94).toFixed(0)+'px' : '';
+  }
+  function cargar(i){ var im=new Image(); im.decoding='async'; im.onload=function(){ if(i===0||i===N-1) pintar(true); }; im.src=src(i); fotos[i]=im; }
+  medir();
+  if(quieto){ cargar(N-1); hoja.classList.add('marcada'); }
+  else { cargar(0); cargar(N-1); for(var i=1;i<N-1;i++) cargar(i); }
+  var ticking=false;
+  function pintar(){
+    ticking=false;
+    if(quieto){ dibujar(N-1); return; }
+    var r=esc.getBoundingClientRect(), total=esc.offsetHeight-window.innerHeight;
+    var p=clamp(-r.top/total);
+    document.documentElement.classList.toggle('oscuro', r.top<window.innerHeight*0.5 && r.bottom>window.innerHeight*0.5);
+    dibujar(Math.round(clamp(p/0.72)*(N-1)));
+    txt.style.opacity=(1-clamp((p-0.18)/0.16)).toFixed(2);
+    txt.style.transform='translateY('+(-p*40).toFixed(1)+'px)';
+    var h=clamp((p-0.74)/0.12);
+    hoja.style.opacity=h.toFixed(2);
+    hoja.style.transform='translate('+dx.toFixed(1)+'px,'+((1-h)*40).toFixed(1)+'px)';
+    if(h>0.95) hoja.classList.add('marcada');
+  }
+  window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(pintar);} },{passive:true});
+  window.addEventListener('resize',function(){ medir(); pintar(); });
+  pintar();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- PLANTILLA BASE: página tras dar el correo. CAMBIA el asunto, el texto del botón y la foto. -->
+<title>Revisa tu correo · TMV</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Una web gratuita que ordena tus apuntes como los mira quien te corrige: A, B, C y X. En 10 minutos.">
+<meta property="og:title" content="Qué te puedes saltar de este tema (y qué no)">
+<meta property="og:description" content="Ordena tus apuntes como los mira quien te corrige. Gratis, en 10 minutos.">
+<meta property="og:image" content="https://recursos.nilmarrugat.com/80/img/foto.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cal+Sans&family=Inter:wght@400;500;700&family=Mr+Dafoe&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F7EFE3; --tinta:#2B1D14; --texto:#4A3829; --gris:#7C6857; --linea:#E9DBC7;
+  --tarjeta:#FFFAF2; --brasa:#3A2416; --naranja:#EB7018; --fluor:#F8C043; --verde:#2CA74B; --azul:#2F80ED;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:6px}
+.envoltura{max-width:1180px;margin:0 auto;padding:0 22px}
+.barra{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.marca{font-family:"Archivo Black";font-size:15px;letter-spacing:-.03em;text-decoration:none}
+.marca span{color:var(--naranja)}
+.barra small{font-size:14px;color:var(--gris)}
+
+/* Portada */
+.portada{display:grid;gap:44px;grid-template-columns:1fr;padding:36px 0 64px;position:relative}
+@media(min-width:980px){.portada{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center}}
+.portada::before{content:"";position:absolute;right:-8%;top:-6%;width:70%;height:115%;pointer-events:none;background:radial-gradient(closest-side,rgba(248,192,67,.22),rgba(235,112,24,.08) 55%,transparent 75%);z-index:-1}
+h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,7.6vw,96px);line-height:.92;letter-spacing:-.07em;max-width:13ch}
+.firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(44px,6.6vw,80px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-9px 0 0 4px}
+.entradilla{max-width:46ch;margin-top:22px;font-size:19px;color:var(--texto)}
+.foto-portada{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px -30px rgba(90,48,16,.55);transform:rotate(1deg)}
+.foto-portada img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Formulario */
+.alta{margin-top:28px;max-width:470px}
+.alta-fila{display:flex;gap:8px;background:var(--tarjeta);border:1.5px solid var(--linea);border-radius:999px;padding:6px;transition:border-color .2s}
+.alta-fila:focus-within{border-color:var(--tinta)}
+.alta input{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--tinta);background:transparent;border:0;padding:10px 14px;outline:none}
+.alta button{font:700 16px Inter,sans-serif;background:var(--naranja);color:#fff;border:0;border-radius:999px;padding:12px 22px;cursor:pointer;white-space:nowrap;transition:background .15s,transform .1s}
+.alta button:hover{background:#cf5f12}
+.alta button:active{transform:scale(.97)}
+.alta small{display:block;margin-top:10px;font-size:13.5px;line-height:1.5;color:var(--gris);padding-left:16px}
+.alta .error{color:#B3261E;font-size:14px;margin-top:8px;padding-left:16px}
+@media(max-width:420px){.alta-fila{flex-direction:column;border-radius:18px}.alta button{width:100%}}
+.dato-portada{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:15px;color:var(--texto)}
+.dato-portada b{font-family:"Archivo Black";font-weight:400;font-size:28px;letter-spacing:-.05em;color:var(--naranja)}
+
+section{padding:64px 0;border-top:1px solid var(--linea)}
+h2{font-family:"Cal Sans";font-weight:400;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-.01em;margin-bottom:18px}
+h3{font-family:"Cal Sans";font-weight:400;font-size:21px;line-height:1.2;margin-bottom:6px}
+.sub{color:var(--texto);max-width:56ch}
+
+/* Escena con scroll */
+.escena{height:260vh;position:relative;border-top:0;padding:0}
+.escena-fija{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;background:var(--brasa)}
+.escena-foto{position:absolute;inset:0;background:url(../img/foto.jpg) center/cover no-repeat;transform-origin:62% 80%;will-change:transform,filter}
+.escena-velo{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 100%,rgba(43,29,20,.0),rgba(43,29,20,.55));pointer-events:none}
+.escena-texto{position:absolute;left:0;right:0;top:12vh;text-align:center;color:#FFF3E2;padding:0 22px;will-change:opacity,transform}
+.escena-texto p{font-family:"Cal Sans";font-size:clamp(24px,3.4vw,40px);line-height:1.15;max-width:22ch;margin:0 auto;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.hoja{position:relative;width:min(470px,88vw);background:var(--tarjeta);border-radius:20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);padding:22px 22px 18px 64px;opacity:0;transform:translateY(40px) rotate(-1deg);will-change:opacity,transform}
+.hoja::before{content:"";position:absolute;left:48px;top:0;bottom:0;width:1.5px;background:#F2B9A0}
+.hoja h4{font-family:"Cal Sans";font-weight:400;font-size:19px;margin-bottom:10px}
+.ap{position:relative;font-size:15px;line-height:1.45;padding:7px 0;border-bottom:1px dashed var(--linea);color:var(--texto)}
+.ap:last-child{border-bottom:0}
+.ap i{position:absolute;left:-52px;top:2px;width:32px;height:32px;display:grid;place-items:center;font:400 18px "Cal Sans";font-style:normal}
+.ap i svg{position:absolute;inset:-3px;width:38px;height:38px;overflow:visible}
+.ap i circle{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:110;stroke-dashoffset:110;transition:stroke-dashoffset .55s ease-out}
+.ap small{display:block;font-size:12.5px;color:var(--gris)}
+.ap.a i{color:var(--naranja)} .ap.b i{color:#C9921B} .ap.c i{color:var(--verde)} .ap.x i{color:var(--gris)}
+.ap.x{color:#9a8b7d}
+.ap.a span{background-image:linear-gradient(transparent 55%,rgba(248,192,67,.7) 55%);background-repeat:no-repeat;background-size:0% 100%;transition:background-size .5s ease-out}
+.ap.x .tach{position:relative;display:inline-block}
+.ap.x .tach::after{content:"";position:absolute;left:0;top:52%;height:2px;width:0;border-radius:2px;background:rgba(43,29,20,.6);transition:width .45s ease-out}
+.hoja.marcada .ap i circle{stroke-dashoffset:0}
+.hoja.marcada .ap.a span{background-size:100% 100%}
+.hoja.marcada .ap.x .tach::after{width:100%}
+.hoja.marcada .ap:nth-of-type(2) circle,.hoja.marcada .ap:nth-of-type(2) span{transition-delay:.35s}
+.hoja.marcada .ap:nth-of-type(3) circle{transition-delay:.7s}
+.hoja.marcada .ap:nth-of-type(4) circle{transition-delay:1.05s}
+.hoja.marcada .ap:nth-of-type(5) circle{transition-delay:1.4s}
+.hoja.marcada .ap.x .tach::after{transition-delay:1.8s}
+
+/* Cómo funciona */
+.pasos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));counter-reset:p;margin-top:26px}
+.paso{background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:22px}
+.paso::before{counter-increment:p;content:counter(p);font-family:"Archivo Black";font-size:44px;line-height:1;letter-spacing:-.06em;color:var(--naranja);display:block;margin-bottom:12px}
+.paso p{color:var(--texto);font-size:16px}
+
+/* Prueba */
+.prueba{display:grid;gap:28px;grid-template-columns:1fr}
+@media(min-width:980px){.prueba{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center}}
+.linea-notas{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;padding:22px}
+.curso{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed var(--linea)}
+.curso:last-child{border-bottom:0}
+.curso span{font-size:14.5px;color:var(--texto)}
+.puntos{display:flex;flex-wrap:wrap;gap:4px}
+.puntos i{width:11px;height:11px;border-radius:50%;background:#DCCDB8}
+.puntos .n{background:var(--fluor)} .puntos .e{background:var(--naranja)}
+.curso b{font-family:"Archivo Black";font-weight:400;letter-spacing:-.04em;font-size:17px;white-space:nowrap}
+.leyenda{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--gris);margin-top:12px}
+.leyenda i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+
+/* Preguntas */
+.preguntas{max-width:760px}
+details{border-bottom:1px solid var(--linea);padding:18px 0}
+summary{cursor:pointer;list-style:none;font-family:"Cal Sans";font-size:20px;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--naranja);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:10px;color:var(--texto);max-width:62ch}
+
+/* Cierre */
+.cierre{background:radial-gradient(120% 90% at 100% 100%,rgba(235,112,24,.17),transparent 60%),var(--brasa);color:#FFF3E2;border-radius:26px;padding:clamp(28px,5vw,56px);margin:64px 0}
+.cierre h2{color:#FFF3E2}
+.cierre .sub{color:#E8D6C2}
+.cierre .alta-fila{background:#4A3020;border-color:#5C3D29}
+.cierre .alta input{color:#FFF3E2}
+.cierre .alta input::placeholder{color:#C8AE95}
+.cierre .alta small{color:#C8AE95}
+.abrir-correo{display:inline-block;margin-top:18px;font:700 16px Inter,sans-serif;background:var(--naranja);color:#fff;text-decoration:none;border-radius:999px;padding:13px 24px;transition:background .15s,transform .1s}
+.abrir-correo:hover{background:#cf5f12}
+.abrir-correo:active{transform:scale(.97)}
+footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-top:1px solid var(--linea)}
+@media(prefers-reduced-motion:reduce){.escena{height:auto}.escena-fija{position:relative;height:auto;padding:80px 0}.escena-foto{transform:none!important}.hoja{opacity:1;transform:none}.escena-texto{position:relative;top:auto;margin-bottom:24px}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="envoltura">
+  <header class="barra"><a class="marca" href="https://www.instagram.com/tmv_podcast/">TMV <span>|</span> Tu Mejor Versión</a><small>Recurso gratuito</small></header>
+  <main class="portada" style="min-height:70vh">
+    <div>
+      <h1>Ya casi lo tienes</h1>
+      <span class="firma">mira tu correo</span>
+      <!-- CAMBIA: asunto exacto del correo de Kit y texto exacto del botón -->
+      <p class="entradilla">Te acabo de enviar un correo desde <b>hola@nilmarrugat.com</b> con el asunto <b>«Tu mapa 80/20 está a un clic»</b>. Dentro del mail pulsa <b>«Abrir mi mapa»</b> y se te abre el recurso gratuito.</p>
+      <p class="entradilla">Lo más probable es que te haya caído en <b>Promociones</b>.</p>
+      <a class="abrir-correo" href="https://mail.google.com/mail/u/0/#search/from%3A(hola%40nilmarrugat.com)+in%3Aanywhere+newer_than%3A1d" target="_blank" rel="noopener">Buscarlo en Gmail</a>
+      <p class="entradilla" style="font-size:16px;color:var(--gris)">¿Usas otro correo? Busca «hola@nilmarrugat.com» en Promociones o Spam. Si no está, espera un par de minutos.</p>
+    </div>
+    <figure class="foto-portada"><img src="../img/foto.jpg" alt="Nil estudiando de noche en su escritorio" width="1400" height="1050"></figure>
+  </main>
+</div>
+<footer>TMV | Tu Mejor Versión · Hecho por Nil Marrugat</footer>
+</body>
+</html>

@@ -8,11 +8,11 @@ Repositorio de las webs de captación de Nil Marrugat (TMV | Tu Mejor Versión).
 <palabra>/index.html        landing del imán (formulario de Kit con doble opt-in)
 <palabra>/<ruta-oculta>/    la web del imán, a la que solo se llega al confirmar el correo
 <palabra>/img/              imágenes de ese imán
-_base/                      plantilla maestra de landing (cuando exista): se reutiliza y solo cambia lo del imán
+_base/                      plantilla maestra de landing y gracias (copia de /80/ con lo que cambia marcado CAMBIA; guía en _base/LEEME.md)
 _plantillas/correo-confirmacion.md   correo de confirmación de Kit (genérico, dos huecos por imán)
 ```
 
-- La **landing** es casi siempre la misma: cambian el titular, la promesa, el visual y la palabra clave. Se parte de `_base/`.
+- La **landing** es casi siempre la misma: cambian el titular, la promesa, el visual y la palabra clave. Se parte de `_base/` (`cp -r _base <palabra>`). Proceso completo de un imán nuevo: skill `web-imanes`.
 - La **web del imán** es lo que cambia de verdad en cada uno.
 - Imán activo: `80` (Mapa 80/20, vídeo CAPT-01).
   - Landing: `/80/` (formulario propio → Kit, formulario `10219237`, `action=https://app.kit.com/forms/10219237/subscriptions`, campo `email_address`).
