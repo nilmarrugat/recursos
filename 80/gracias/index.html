@@ -125,6 +125,9 @@ details p{margin-top:10px;color:var(--texto);max-width:62ch}
 .cierre .alta input{color:#FFF3E2}
 .cierre .alta input::placeholder{color:#C8AE95}
 .cierre .alta small{color:#C8AE95}
+.abrir-correo{display:inline-block;margin-top:18px;font:700 16px Inter,sans-serif;background:var(--naranja);color:#fff;text-decoration:none;border-radius:999px;padding:13px 24px;transition:background .15s,transform .1s}
+.abrir-correo:hover{background:#cf5f12}
+.abrir-correo:active{transform:scale(.97)}
 footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-top:1px solid var(--linea)}
 @media(prefers-reduced-motion:reduce){.escena{height:auto}.escena-fija{position:relative;height:auto;padding:80px 0}.escena-foto{transform:none!important}.hoja{opacity:1;transform:none}.escena-texto{position:relative;top:auto;margin-bottom:24px}*{transition:none!important}}
 </style>
@@ -136,8 +139,10 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
     <div>
       <h1>Ya casi lo tienes</h1>
       <span class="firma">mira tu correo</span>
-      <p class="entradilla">Te acabo de enviar un correo desde <b>hola@nilmarrugat.com</b>. Pulsa <b>«Confirmar mi correo y abrir mi mapa»</b> y se te abre la web.</p>
-      <p class="entradilla" style="font-size:16px;color:var(--gris)">¿No te llega en un par de minutos? Mira en Promociones o Spam. Si estás en el móvil, puede tardar un poco más.</p>
+      <p class="entradilla">Te acabo de enviar un correo desde <b>hola@nilmarrugat.com</b> con el asunto <b>«Tu mapa 80/20 está a un clic»</b>. Pulsa <b>«Abrir mi mapa»</b> y se te abre la web.</p>
+      <p class="entradilla">Lo más probable es que te haya caído en <b>Promociones</b>.</p>
+      <a class="abrir-correo" href="https://mail.google.com/mail/u/0/#search/from%3A(hola%40nilmarrugat.com)+in%3Aanywhere+newer_than%3A1d" target="_blank" rel="noopener">Buscarlo en Gmail</a>
+      <p class="entradilla" style="font-size:16px;color:var(--gris)">¿Usas otro correo? Busca «hola@nilmarrugat.com» en Promociones o Spam. Si no está, espera un par de minutos.</p>
     </div>
     <figure class="foto-portada"><img src="../img/foto.jpg" alt="Nil estudiando de noche en su escritorio" width="1400" height="1050"></figure>
   </main>
