@@ -28,9 +28,21 @@ a{color:inherit}
 .barra small{font-size:14px;color:var(--gris)}
 
 /* Portada */
-.portada{padding:40px 0 56px;position:relative}
+.portada{padding:40px 0 56px}
 h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,8.4vw,104px);line-height:.92;letter-spacing:-.07em;max-width:13ch}
 .firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(44px,7vw,84px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-6px 0 0 4px}
+.portada{display:grid;gap:40px;grid-template-columns:1fr}
+@media(min-width:980px){.portada{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center}}
+.apuntes{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 22px 50px -28px rgba(17,17,17,.35);padding:22px 22px 18px 64px;position:relative;transform:rotate(1.2deg);max-width:470px;justify-self:center;width:100%}
+.apuntes::before{content:"";position:absolute;left:48px;top:0;bottom:0;width:1.5px;background:#F2B9A0}
+.apuntes h4{font-family:"Cal Sans";font-weight:400;font-size:19px;margin-bottom:10px}
+.ap{position:relative;font-size:15px;line-height:1.45;padding:7px 0;border-bottom:1px dashed var(--linea);color:#2a2a28}
+.ap:last-child{border-bottom:0}
+.ap i{position:absolute;left:-52px;top:2px;width:32px;height:32px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font:400 18px "Cal Sans";font-style:normal}
+.ap.a i{color:var(--naranja)} .ap.b i{color:#C9921B} .ap.c i{color:var(--verde)} .ap.x i{color:var(--gris)}
+.ap.a span{background:linear-gradient(transparent 55%,rgba(248,192,67,.7) 55%)}
+.ap.x{color:#9a9993;text-decoration:line-through;text-decoration-color:rgba(17,17,17,.35)}
+.ap small{display:block;font-size:12.5px;color:var(--gris);text-decoration:none}
 .entradilla{max-width:56ch;margin-top:26px;font-size:19px;color:#2a2a28}
 .notas{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
 .nota{display:flex;align-items:center;gap:10px;background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:10px 14px 10px 10px;font-size:15px}
@@ -99,7 +111,7 @@ footer{padding:36px 0 50px;color:var(--gris);font-size:14px;border-top:1px solid
   </header>
 
   <main>
-    <div class="portada">
+    <div class="portada"><div>
       <h1>Qué te puedes saltar de este tema</h1>
       <span class="firma">y qué no</span>
       <p class="entradilla">Rellena lo de abajo y te sale un prompt hecho a tu medida. Lo pegas en la IA junto a tus apuntes y te los devuelve ordenados como los mira quien te va a corregir.</p>
@@ -108,6 +120,15 @@ footer{padding:36px 0 50px;color:var(--gris);font-size:14px;border-top:1px solid
         <div class="nota b"><b>B</b>Para el 7-8</div>
         <div class="nota c"><b>C</b>Para el 9-10</div>
         <div class="nota x"><b>X</b>Te lo puedes saltar ahora</div>
+      </div>
+      </div>
+      <div class="apuntes" aria-label="Ejemplo de apuntes ordenados">
+        <h4>Tema 4 · La Restauración</h4>
+        <div class="ap a"><i>A</i><span>Turno pacífico y caciquismo</span><small>Dicho por el profe</small></div>
+        <div class="ap a"><i>A</i><span>Constitución de 1876</span><small>En criterios de la PAU</small></div>
+        <div class="ap b"><i>B</i>Regencia de María Cristina<small>Énfasis en tus apuntes</small></div>
+        <div class="ap c"><i>C</i>Regionalismos y movimiento obrero<small>Inferencia de la IA</small></div>
+        <div class="ap x"><i>X</i>Fechas de cada gobierno<small>«Esto no lo voy a preguntar»</small></div>
       </div>
     </div>
 
