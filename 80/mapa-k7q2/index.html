@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Qué te puedes saltar de este tema (y qué no) · TMV</title>
+<meta name="description" content="Tu mapa 80/20: ordena tus apuntes como los mira quien te va a corregir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cal+Sans&family=Inter:wght@400;500;700&family=Mr+Dafoe&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F7EFE3; --tinta:#2B1D14; --gris:#7C6857; --linea:#E9DBC7; --texto:#4A3829; --brasa:#3A2416;
+  --naranja:#EB7018; --fluor:#F8C043; --verde:#2CA74B; --azul:#2F80ED;
+  --tarjeta:#FFFAF2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 Inter,system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:6px}
+
+.envoltura{max-width:1180px;margin:0 auto;padding:0 22px}
+.barra{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.marca{font-family:"Archivo Black";font-size:15px;letter-spacing:-.03em;text-decoration:none}
+.marca span{color:var(--naranja)}
+.barra small{font-size:14px;color:var(--gris)}
+
+/* Portada */
+.portada{padding:40px 0 56px}
+h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,8.4vw,104px);line-height:.92;letter-spacing:-.07em;max-width:13ch}
+.firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(44px,7vw,84px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-6px 0 0 4px}
+.portada{display:grid;gap:40px;grid-template-columns:1fr}
+@media(min-width:980px){.portada{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center}}
+.apuntes{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 22px 50px -28px rgba(90,48,16,.38);padding:22px 22px 18px 64px;position:relative;transform:rotate(1.2deg);max-width:470px;justify-self:center;width:100%}
+.apuntes::before{content:"";position:absolute;left:48px;top:0;bottom:0;width:1.5px;background:#F2B9A0}
+.apuntes h4{font-family:"Cal Sans";font-weight:400;font-size:19px;margin-bottom:10px}
+.ap{position:relative;font-size:15px;line-height:1.45;padding:7px 0;border-bottom:1px dashed var(--linea);color:var(--texto)}
+.ap:last-child{border-bottom:0}
+.ap i{position:absolute;left:-52px;top:2px;width:32px;height:32px;border-radius:50%;border:2px solid currentColor;display:grid;place-items:center;font:400 18px "Cal Sans";font-style:normal}
+.ap.a i{color:var(--naranja)} .ap.b i{color:#C9921B} .ap.c i{color:var(--verde)} .ap.x i{color:var(--gris)}
+.ap.x{color:#9a9993}
+.ap small{display:block;font-size:12.5px;color:var(--gris);text-decoration:none}
+.portada .firma{margin-top:-9px}
+.entradilla{max-width:56ch;margin-top:26px;font-size:19px;color:var(--texto)}
+.notas{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.nota{display:flex;align-items:center;gap:10px;background:var(--tarjeta);border:1px solid var(--linea);border-radius:14px;padding:10px 14px 10px 10px;font-size:15px}
+.nota b{font-family:"Cal Sans";font-weight:400;font-size:22px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid currentColor}
+.nota.a b{color:var(--naranja)} .nota.b b{color:#C9921B} .nota.c b{color:var(--verde)} .nota.x b{color:var(--gris)}
+
+/* Bloques */
+section{padding:56px 0;border-top:1px solid var(--linea)}
+h2{font-family:"Cal Sans";font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.01em;margin-bottom:22px}
+h3{font-family:"Cal Sans";font-weight:400;font-size:21px;line-height:1.2;margin-bottom:6px}
+.pasos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));counter-reset:p}
+.paso{background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:22px;position:relative}
+.paso::before{counter-increment:p;content:counter(p);font-family:"Archivo Black";font-size:44px;line-height:1;letter-spacing:-.06em;color:var(--naranja);display:block;margin-bottom:12px}
+.paso p{color:var(--texto);font-size:16px}
+.paso .clave{margin-top:10px;font-size:15px;color:var(--gris)}
+
+/* Constructor */
+.taller{display:grid;gap:28px;grid-template-columns:1fr}
+@media(min-width:980px){.taller{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);align-items:start}.hoja-col{position:sticky;top:20px}}
+form{display:grid;gap:18px}
+.fila{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(max-width:560px){.fila{grid-template-columns:1fr}}
+label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+label small{font-weight:400;color:var(--gris)}
+input,textarea,select{width:100%;font:inherit;font-size:16px;color:var(--tinta);background:var(--tarjeta);border:1.5px solid var(--linea);border-radius:12px;padding:12px 14px;transition:border-color .15s}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--tinta)}
+.opciones{display:flex;gap:8px}
+.opciones input{position:absolute;opacity:0;width:1px;height:1px}
+.opciones label{margin:0;flex:1;text-align:center;font-weight:500;border:1.5px solid var(--linea);background:var(--tarjeta);border-radius:12px;padding:11px 10px;cursor:pointer}
+.opciones input:checked+label{border-color:var(--tinta);background:var(--tinta);color:#fff}
+.opciones input:focus-visible+label{outline:3px solid var(--azul);outline-offset:2px}
+.ayuda{font-size:14px;color:var(--gris);margin-top:6px}
+.ayuda a{color:var(--tinta)}
+
+.hoja{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;box-shadow:0 18px 40px -24px rgba(90,48,16,.30);overflow:hidden}
+.hoja-cab{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--linea)}
+.hoja-cab span{font-family:"Cal Sans";font-size:19px}
+.copiar{font:700 15px Inter,sans-serif;background:var(--naranja);color:#fff;border:0;border-radius:999px;padding:11px 20px;cursor:pointer;white-space:nowrap}
+.copiar:hover{background:#d4620f}
+.copiar.ok{background:var(--verde)}
+pre{font:400 14px/1.65 Inter,sans-serif;white-space:pre-wrap;word-break:break-word;padding:20px 20px 24px;max-height:68vh;overflow:auto;color:var(--texto)}
+mark{background:linear-gradient(transparent 12%,rgba(248,192,67,.75) 12%,rgba(248,192,67,.75) 88%,transparent 88%);color:var(--tinta);padding:0 2px;border-radius:2px}
+mark.vacio{background:none;color:var(--naranja);font-weight:700}
+.ir{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.ir a{font-size:15px;font-weight:500;text-decoration:none;border:1.5px solid var(--linea);background:var(--tarjeta);border-radius:999px;padding:9px 16px}
+.ir a:hover{border-color:var(--tinta)}
+
+/* Cierre */
+.cierre{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.cierre p{color:var(--texto);max-width:52ch}
+.boton-ig{display:inline-block;margin-top:16px;font-weight:700;text-decoration:none;background:var(--tinta);color:#fff;border-radius:999px;padding:12px 22px}
+.siguiente{background:radial-gradient(120% 90% at 100% 100%,rgba(235,112,24,.17),transparent 60%),var(--brasa);color:#fff;border-radius:22px;padding:28px}
+.siguiente h3{color:#fff}
+.siguiente p{color:#E8D6C2}
+.siguiente .firma{font-size:44px;margin:8px 0 0}
+
+/* La prueba */
+.prueba-intro{display:grid;gap:28px;grid-template-columns:1fr;margin-bottom:30px}
+.prueba-intro>div{display:flex;flex-direction:column}
+@media(min-width:980px){.prueba-intro{align-items:stretch}.prueba-intro .leyenda{margin-top:auto}.prueba-intro h2{margin-top:-4px}}
+@media(min-width:980px){.prueba-intro{grid-template-columns:minmax(0,1fr) minmax(0,.8fr)}}
+.prueba-intro p{color:var(--texto);max-width:54ch}
+.foto{margin:0;border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#EFEDE7}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.cursos{display:grid;gap:12px;grid-template-columns:repeat(5,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px}
+.curso{scroll-snap-align:start;text-align:left;font:inherit;color:inherit;background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,transform .15s}
+.curso:hover{border-color:var(--tinta);transform:translateY(-2px)}
+.curso .nombre{font-family:"Cal Sans";font-size:20px;line-height:1.1}
+.curso .anyo{font-size:13px;color:var(--gris)}
+.puntos{display:flex;flex-wrap:wrap;gap:5px}
+.puntos span{width:14px;height:14px;border-radius:50%;background:#DCCDB8}
+.puntos .n{background:var(--fluor)} .puntos .e{background:var(--naranja)}
+.dato{font-family:"Archivo Black";font-size:30px;letter-spacing:-.05em;line-height:1}
+.dato small{display:block;font-family:Inter;font-size:13px;letter-spacing:0;color:var(--gris);margin-top:6px;font-weight:400}
+.curso .ver{font-size:14px;font-weight:700;margin-top:auto;text-decoration:underline;text-underline-offset:3px}
+.leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--gris);margin-top:6px}
+.leyenda i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+dialog{margin:auto;border:0;padding:0;max-width:min(980px,96vw);width:100%;max-height:92vh;border-radius:20px;background:var(--papel);color:var(--tinta)}
+dialog::backdrop{background:rgba(43,29,20,.78)}
+.dlg-cab{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--papel);border-bottom:1px solid var(--linea);z-index:1}
+.dlg-cab b{font-family:"Cal Sans";font-weight:400;font-size:20px}
+.cerrar{font:700 15px Inter;background:var(--tinta);color:#fff;border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
+.dlg-cuerpo{padding:16px;display:grid;gap:14px}
+.dlg-cuerpo img{width:100%;height:auto;border-radius:10px;border:1px solid var(--linea);background:#fff}
+/* rotulador */
+.ap i{border:0!important}
+.ap i svg{position:absolute;inset:-3px;width:38px;height:38px;overflow:visible}
+.ap i circle{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:110;stroke-dashoffset:110;animation:trazo .55s ease-out forwards}
+.ap.x .tach{position:relative;display:inline-block}
+.ap.x .tach::after{content:"";position:absolute;left:0;top:52%;height:2px;width:0;border-radius:2px;background:rgba(43,29,20,.6);animation:tachar .45s ease-out 2.5s forwards}
+.ap.x{text-decoration:none}
+.ap:nth-of-type(2) circle{animation-delay:.5s}.ap:nth-of-type(3) circle{animation-delay:.9s}.ap:nth-of-type(4) circle{animation-delay:1.3s}.ap:nth-of-type(5) circle{animation-delay:1.7s}.ap:nth-of-type(6) circle{animation-delay:2.1s}
+.ap.a span{background-size:0% 100%;background-repeat:no-repeat;background-image:linear-gradient(transparent 55%,rgba(248,192,67,.7) 55%);animation:fluor .5s ease-out forwards}
+.ap:nth-of-type(2) span{animation-delay:.35s}.ap:nth-of-type(3) span{animation-delay:.75s}
+@keyframes trazo{to{stroke-dashoffset:0}}
+@keyframes tachar{to{width:100%}}
+@keyframes fluor{to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.ap i circle{animation:none;stroke-dashoffset:0}.ap.x .tach::after{animation:none;width:100%}.ap.a span{animation:none;background-size:100% 100%}}
+
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+.portada{position:relative}
+.portada::before{content:"";position:absolute;right:-8%;top:-10%;width:70%;height:120%;pointer-events:none;background:radial-gradient(closest-side,rgba(248,192,67,.22),rgba(235,112,24,.08) 55%,transparent 75%);z-index:-1}
+.copiar:hover{background:#cf5f12}
+footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-top:1px solid var(--linea)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="envoltura">
+  <header class="barra">
+    <a class="marca" href="https://www.instagram.com/tmv_podcast/">TMV <span>|</span> Tu Mejor Versión</a>
+    <small>Tu mapa 80/20</small>
+  </header>
+
+  <main>
+    <div class="portada"><div>
+      <h1>Qué te puedes saltar de este tema</h1>
+      <span class="firma">y qué no</span>
+      <p class="entradilla">Rellena lo de abajo y te sale un prompt hecho a tu medida. Lo pegas en la IA junto a tus apuntes y te los devuelve ordenados como los mira quien te va a corregir.</p>
+      </div>
+      <div class="apuntes" aria-label="Ejemplo de apuntes ordenados">
+        <h4>Tema 4 · La Restauración</h4>
+        <div class="ap a"><i>A<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span>Turno pacífico y caciquismo</span><small>Dicho por el profe</small></div>
+        <div class="ap a"><i>A<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span>Constitución de 1876</span><small>En criterios de la PAU</small></div>
+        <div class="ap b"><i>B<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i>Regencia de María Cristina<small>Énfasis en tus apuntes</small></div>
+        <div class="ap c"><i>C<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i>Regionalismos y movimiento obrero<small>Inferencia de la IA</small></div>
+        <div class="ap x"><i>X<svg viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="17" transform="rotate(-80 19 19)"/></svg></i><span class="tach">Fechas de cada gobierno</span><small>«Esto no lo voy a preguntar»</small></div>
+      </div>
+    </div>
+
+
+    <section aria-labelledby="t-prueba">
+      <div class="prueba-intro">
+        <div>
+          <h2 id="t-prueba">No siempre saqué estas notas…</h2>
+          <p>En 1.º y 2.º de ESO era el de los notables, con algún aprobado justo en Mates y en Inglés. No me faltaban horas: me faltaba saber qué estudiar primero. Cuando empecé a mirar mis apuntes como los mira quien corrige, cambió todo. Aquí están mis boletines de verdad. Toca un curso para verlo entero, con los comentarios de los profes.</p>
+          <div class="leyenda"><span><i style="background:#DCCDB8"></i>Satisfactorio</span><span><i style="background:var(--fluor)"></i>Notable</span><span><i style="background:var(--naranja)"></i>Excelente</span></div>
+        </div>
+        <figure class="foto" id="foto"><img src="../img/foto.jpg" alt="Nil estudiando en su escritorio de noche" onerror="document.getElementById('foto').hidden=true"></figure>
+      </div>
+      <div class="cursos">
+        <button class="curso" data-curso="1eso" data-titulo="1.º de ESO · 2021-22" data-imgs="1eso-1,1eso-2"><span><span class="nombre">1.º de ESO</span><br><span class="anyo">2021-22</span></span><span class="puntos">SSN NNN NNN NEE E</span><span class="dato">3 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="2eso" data-titulo="2.º de ESO · 2022-23" data-imgs="2eso-1"><span><span class="nombre">2.º de ESO</span><br><span class="anyo">2022-23</span></span><span class="puntos">SNN NNN NNN NEE E</span><span class="dato">3 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="3eso" data-titulo="3.º de ESO · 2023-24" data-imgs="3eso-1"><span><span class="nombre">3.º de ESO</span><br><span class="anyo">2023-24</span></span><span class="puntos">NNE EEE EEE EEE E</span><span class="dato">11 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="4eso" data-titulo="4.º de ESO · 2024-25" data-imgs="4eso-1,4eso-2,4eso-3"><span><span class="nombre">4.º de ESO</span><br><span class="anyo">2024-25</span></span><span class="puntos">NNN NEE EEE EE</span><span class="dato">7 de 11<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="1bach" data-titulo="1.º de bachillerato · 2025-26" data-imgs="1bach-1"><span><span class="nombre">1.º de bachillerato</span><br><span class="anyo">2025-26</span></span><span class="puntos">NNN NNE EEE E</span><span class="dato">8,8<small>de media final</small></span><span class="ver">Ver boletín</span></button>
+      </div>
+      <dialog id="dlg" aria-labelledby="dlg-t"><div class="dlg-cab"><b id="dlg-t"></b><button class="cerrar" type="button" id="cerrar">Cerrar</button></div><div class="dlg-cuerpo" id="dlg-c"></div></dialog>
+    </section>
+
+    <section aria-labelledby="t-necesitas">
+      <h2 id="t-necesitas">Antes de empezar, ten esto a mano</h2>
+      <div class="pasos">
+        <div class="paso">
+          <h3>Tus apuntes del tema</h3>
+          <p>PDF, fotos o texto. Los tuyos, tal como los tengas. Un tema o todo lo que entra.</p>
+        </div>
+        <div class="paso">
+          <h3>Lo que ha dicho tu profe</h3>
+          <p>Qué entra, qué no, en qué ha insistido y qué errores ha avisado.</p>
+          <p class="clave">Es lo que más vale: en el examen del instituto, el corrector es tu profe.</p>
+        </div>
+        <div class="paso">
+          <h3>Los criterios, si es la PAU</h3>
+          <p>Los criterios de corrección o un modelo de examen de tu comunidad. Están publicados en la web de tu universidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-taller">
+      <h2 id="t-taller">Monta tu prompt</h2>
+      <div class="taller">
+        <form id="f" autocomplete="off">
+          <div>
+            <label for="tema">Qué entra en el examen</label>
+            <input id="tema" name="tema" placeholder="Tema 4: la Restauración (1874-1902)">
+          </div>
+          <div>
+            <span id="l-tipo" style="display:block;font-weight:700;font-size:15px;margin-bottom:6px">Tipo de examen</span>
+            <div class="opciones" role="radiogroup" aria-labelledby="l-tipo">
+              <input type="radio" id="t1" name="tipo" value="examen del instituto" checked><label for="t1">Instituto</label>
+              <input type="radio" id="t2" name="tipo" value="PAU"><label for="t2">PAU</label>
+            </div>
+          </div>
+          <div class="fila">
+            <div>
+              <label for="fecha">Fecha</label>
+              <input id="fecha" name="fecha" placeholder="12 de diciembre">
+            </div>
+            <div>
+              <label for="formato">Formato <small>(si lo sabes)</small></label>
+              <input id="formato" name="formato" placeholder="2 preguntas de desarrollo y un comentario">
+            </div>
+          </div>
+          <div>
+            <label for="profe">Lo que ha dicho tu profe</label>
+            <textarea id="profe" name="profe" placeholder="Ha dicho que el turno pacífico entra seguro, que no preguntará fechas de gobiernos y que le cuenta mucho relacionar con el caciquismo."></textarea>
+            <p class="ayuda" id="ayuda-pau" hidden>¿PAU? Busca «modelo examen PAU [asignatura] [tu comunidad]» y súbelo junto a tus apuntes.</p>
+          </div>
+          <div class="fila">
+            <div>
+              <label for="objetivo">Nota que necesitas</label>
+              <input id="objetivo" name="objetivo" placeholder="12,5 de 14 para entrar en Medicina">
+            </div>
+            <div>
+              <label for="actual">Nota que llevas</label>
+              <input id="actual" name="actual" placeholder="7,5">
+            </div>
+          </div>
+          <div>
+            <label for="horas">Horas que puedes dedicarle</label>
+            <input id="horas" name="horas" placeholder="6 horas repartidas en 4 días">
+          </div>
+        </form>
+
+        <div class="hoja-col">
+          <div class="hoja">
+            <div class="hoja-cab">
+              <span>Tu prompt</span>
+              <button class="copiar" id="copiar" type="button">Copiar prompt</button>
+            </div>
+            <pre id="prompt" aria-live="polite"></pre>
+          </div>
+          <div class="ir" aria-label="Abrir una IA">
+            <a href="https://chatgpt.com/" target="_blank" rel="noopener">Abrir ChatGPT</a>
+            <a href="https://gemini.google.com/" target="_blank" rel="noopener">Abrir Gemini</a>
+            <a href="https://notebooklm.google.com/" target="_blank" rel="noopener">Abrir NotebookLM</a>
+          </div>
+          <p class="ayuda" style="margin-top:12px">Sube primero tus apuntes y lo de tu profe, pega el prompt y empieza a leer por el bloque A. La versión gratis basta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-fin">
+      <div class="cierre">
+        <div>
+          <h2 id="t-fin">¿Te ha servido?</h2>
+          <p>Pásaselo a quien tenga el mismo examen que tú. Y si quieres ver cómo aplico el resto del sistema, lo cuento todo en mi Instagram.</p>
+          <a class="boton-ig" id="boton-ig" href="https://www.instagram.com/tmv_podcast/" target="_blank" rel="noopener">Ir a mi Instagram</a>
+        </div>
+        <div class="siguiente">
+          <h3>Esto es un paso de cinco</h3>
+          <p>El resto de mi sistema es el pack de examen completo, el repaso por errores y cómo montarlo para todas las asignaturas hasta la PAU. Cuando lo abra, te aviso por correo antes que a nadie.</p>
+          <span class="firma">Nil</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>TMV | Tu Mejor Versión · Hecho por Nil Marrugat</footer>
+</div>
+
+<script>
+(function(){
+  var f=document.getElementById('f'), out=document.getElementById('prompt'), btn=document.getElementById('copiar'), ayudaPau=document.getElementById('ayuda-pau');
+  var CLAVE='tmv-80-v1', campos=['tema','fecha','formato','profe','objetivo','actual','horas'];
+  function leerGuardado(){try{return JSON.parse(localStorage.getItem(CLAVE)||'{}')}catch(e){return {}}}
+  function guardar(d){try{localStorage.setItem(CLAVE,JSON.stringify(d))}catch(e){}}
+  var g=leerGuardado();
+  campos.forEach(function(c){ if(g[c]) f.elements[c].value=g[c]; });
+  if(g.tipo){ var r=f.querySelector('input[name=tipo][value="'+g.tipo+'"]'); if(r) r.checked=true; }
+
+  function esc(s){return s.replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m]})}
+  function datos(){ var d={}; campos.forEach(function(c){d[c]=f.elements[c].value.trim()}); d.tipo=f.querySelector('input[name=tipo]:checked').value; return d; }
+
+  function texto(d, html){
+    function v(val, hueco){ if(!html) return val||('['+hueco+']'); return val?'<mark>'+esc(val)+'</mark>':'<mark class="vacio">['+hueco+']</mark>'; }
+    var pau=d.tipo==='PAU';
+    var L=[];
+    L.push('Actúa como el corrector de este examen. Tu trabajo es decirme qué estudiar primero, no resumirme el tema.');
+    L.push('');
+    L.push('Material: mis apuntes de '+v(d.tema,'el tema o todo lo que entra')+', lo que ha dicho mi profe sobre el examen'+(pau?' y los criterios de corrección o el modelo de examen de la PAU.':' y, si los tengo, los criterios de corrección.'));
+    L.push('Examen: '+(html?'<mark>'+d.tipo+'</mark>':d.tipo)+' el '+v(d.fecha,'fecha')+'.'+(d.formato?' Formato: '+v(d.formato,'')+'.':''));
+    L.push('');
+    L.push('Haz esto:');
+    L.push('1. MAPA 80/20. Clasifica cada parte de mis apuntes en:');
+    L.push('   A = imprescindible (tiene que salirme sin mirar)');
+    L.push('   B = para subir al 7-8');
+    L.push('   C = para el 9-10, solo si A y B están dominados');
+    L.push('   X = no rentable antes del examen');
+    L.push('   Para cada elemento de A y B, di POR QUÉ y con qué certeza, usando estas etiquetas:');
+    L.push('   [DICHO POR EL PROFE] · [EN CRITERIOS O MODELO] · [ÉNFASIS EN MIS APUNTES] · [INFERENCIA DE LA IA]');
+    L.push('   Si el profe ha dicho que algo NO entra, ponlo en X y avísame.');
+    L.push('2. DISTINCIONES QUE DAN O QUITAN PUNTOS: los conceptos que se confunden fácilmente (máximo 6).');
+    L.push('3. A MANO SÍ O SÍ: los 3-5 elementos que debería copiar a mano y reconstruir de memoria (no los apuntes enteros).');
+    L.push('4. EMPIEZA HOY: un primer bloque de 30 minutos, paso a paso.');
+    L.push('');
+    L.push('Reglas:');
+    L.push('- Usa solo mi material. No inventes datos ni añadas contenido que no esté.');
+    L.push('- Lo que dice el profe manda sobre todo lo demás. Si hay contradicciones entre mis fuentes, señálalas.');
+    L.push('- Si no tienes lo que dice el profe ni criterios, dímelo y explica cómo afecta a tu fiabilidad.');
+    L.push('- Responde en el mismo idioma que mis apuntes.');
+    L.push('');
+    L.push('Lo que ha dicho mi profe:');
+    L.push(v(d.profe,'qué entra, qué no y en qué ha insistido'));
+    L.push('');
+    L.push('Mi perfil (ajusta el mapa a esto):');
+    L.push('- Nota que necesito o quiero: '+v(d.objetivo,'nota'));
+    L.push('- Nota aproximada que llevo en esta asignatura: '+v(d.actual,'nota'));
+    L.push('- Horas que puedo dedicar a este examen: '+v(d.horas,'horas'));
+    L.push('Si necesito una nota muy alta, lo que normalmente sería C puede pasar a B o A. Si voy justo de tiempo, sé más estricto con la X.');
+    return L.join('\n');
+  }
+
+  function pintar(){ var d=datos(); out.innerHTML=texto(d,true); ayudaPau.hidden=d.tipo!=='PAU'; guardar(d); btn.textContent='Copiar prompt'; btn.classList.remove('ok'); }
+  f.addEventListener('input',pintar); f.addEventListener('change',pintar);
+
+  btn.addEventListener('click',function(){
+    var t=texto(datos(),false);
+    function hecho(){ btn.textContent='Copiado'; btn.classList.add('ok'); }
+    if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(t).then(hecho,fallback); } else fallback();
+    function fallback(){ var a=document.createElement('textarea'); a.value=t; a.setAttribute('readonly',''); a.style.position='absolute'; a.style.left='-9999px'; document.body.appendChild(a); a.select(); try{document.execCommand('copy'); hecho();}catch(e){ btn.textContent='Selecciona y copia'; } document.body.removeChild(a); }
+  });
+  pintar();
+})();
+
+(function(){
+  document.querySelectorAll('.puntos').forEach(function(p){
+    var t=p.textContent.replace(/\s/g,''); p.textContent=''; p.setAttribute('aria-hidden','true');
+    for(var i=0;i<t.length;i++){var d=document.createElement('span'); d.className=t[i]==='E'?'e':(t[i]==='N'?'n':''); p.appendChild(d);}
+  });
+  var dlg=document.getElementById('dlg'), c=document.getElementById('dlg-c'), tt=document.getElementById('dlg-t');
+  document.querySelectorAll('.curso').forEach(function(b){
+    b.addEventListener('click',function(){
+      tt.textContent=b.dataset.titulo; c.innerHTML='';
+      b.dataset.imgs.split(',').forEach(function(n,i){var im=document.createElement('img'); im.src='../img/'+n+'.jpg'; im.alt='Boletín de '+b.dataset.titulo+', página '+(i+1); c.appendChild(im);});
+      if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+    });
+  });
+  document.getElementById('cerrar').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+})();
+
+(function(){
+  var a=document.getElementById('boton-ig');
+  
+})();
+</script>
+</body>
+</html>
