@@ -64,6 +64,7 @@ html{scrollbar-color:#D9C6AE #F7EFE3}html.oscuro{scrollbar-color:#6B5442 #3A2416
 .escena{height:360vh;position:relative;border-top:0;padding:0}
 .escena-fija{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;background:var(--brasa)}
 .escena-lienzo{position:absolute;inset:0;width:100%;height:100%;display:block}
+.escena-ambiente{position:absolute;left:-10%;top:-10%;width:120%;height:120%;display:none;filter:blur(36px) brightness(.62) saturate(1.15)}
 .escena-velo{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 100%,rgba(43,29,20,.0),rgba(43,29,20,.55));pointer-events:none}
 .escena-texto{position:absolute;left:0;right:0;top:12vh;text-align:center;color:#FFF3E2;padding:0 22px;will-change:opacity,transform}
 .escena-texto p{font-family:"Cal Sans";font-size:clamp(24px,3.4vw,40px);line-height:1.15;max-width:22ch;margin:0 auto;text-shadow:0 2px 24px rgba(0,0,0,.45)}
@@ -173,7 +174,7 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
 
 <section class="escena" aria-label="Qué hace la web">
   <div class="escena-fija">
-    <canvas class="escena-lienzo" aria-hidden="true"></canvas>
+    <canvas class="escena-ambiente" width="48" height="30" aria-hidden="true"></canvas><canvas class="escena-lienzo" aria-hidden="true"></canvas>
     <div class="escena-velo" aria-hidden="true"></div>
     <div class="escena-texto"><p>Tus apuntes, leídos como los lee quien te corrige.</p></div>
     <div class="hoja" aria-label="Ejemplo de apuntes ordenados">
@@ -276,7 +277,7 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
   });
 
   /* escena con scroll: vídeo convertido en fotogramas */
-  var esc=document.querySelector('.escena'), lienzo=document.querySelector('.escena-lienzo'), ctx=lienzo.getContext('2d'), txt=document.querySelector('.escena-texto'), hoja=document.querySelector('.hoja');
+  var esc=document.querySelector('.escena'), lienzo=document.querySelector('.escena-lienzo'), ctx=lienzo.getContext('2d'), amb=document.querySelector('.escena-ambiente'), actx=amb.getContext('2d'), txt=document.querySelector('.escena-texto'), hoja=document.querySelector('.hoja');
   var N=121, dx=0, fotos=[], actual=-1, quieto=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function src(i){ return 'img/escena/'+String(i+1).padStart(3,'0')+'.jpg'; }
   function clamp(v){return Math.max(0,Math.min(1,v));}
@@ -290,16 +291,26 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
     if(!im || !im.naturalWidth || i===actual) return;
     actual=i;
     var W=lienzo.width, H=lienzo.height, iw=im.naturalWidth, ih=im.naturalHeight;
-    /* móvil: llena la pantalla; escritorio: vertical centrado sobre brasa */
-    var k = W/H < 0.8 ? Math.max(W/iw,H/ih) : H/ih;
-    var w=iw*k, h=ih*k;
+    var ancho = W/H >= 0.8;
+    /* móvil: llena la pantalla; portátil: vertical algo ampliado sobre su propio fondo desenfocado */
+    var k = ancho ? H/ih*1.1 : Math.max(W/iw,H/ih);
+    var w=iw*k, h=ih*k, x0=(W-w)/2;
     ctx.clearRect(0,0,W,H);
-    ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h);
-    /* centro del papel en el último fotograma: x=295.5 de 600 */
-    dx=((W-w)/2 + w*295.5/600 - W/2) * (lienzo.clientWidth/W);
-    if(W/H>=0.8){ var x0=(W-w)/2, f=w*0.18, g;
-      g=ctx.createLinearGradient(x0,0,x0+f,0); g.addColorStop(0,'#3A2416'); g.addColorStop(1,'rgba(58,36,22,0)'); ctx.fillStyle=g; ctx.fillRect(x0-1,0,f,H);
-      g=ctx.createLinearGradient(x0+w-f,0,x0+w,0); g.addColorStop(0,'rgba(58,36,22,0)'); g.addColorStop(1,'#3A2416'); ctx.fillStyle=g; ctx.fillRect(x0+w-f,0,f+1,H); }
+    ctx.drawImage(im,x0,(H-h)/2,w,h);
+    amb.style.display = ancho ? 'block' : 'none';
+    if(ancho){
+      var ka=Math.max(48/iw,30/ih); actx.drawImage(im,(48-iw*ka)/2,(30-ih*ka)/2,iw*ka,ih*ka);
+      /* bordes del vídeo fundidos con el fondo */
+      var f=w*0.2, g;
+      ctx.globalCompositeOperation='destination-out';
+      g=ctx.createLinearGradient(x0,0,x0+f,0); g.addColorStop(0,'#000'); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.fillRect(x0-1,0,f+1,H);
+      g=ctx.createLinearGradient(x0+w-f,0,x0+w,0); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'#000'); ctx.fillStyle=g; ctx.fillRect(x0+w-f,0,f+1,H);
+      ctx.globalCompositeOperation='source-over';
+    }
+    /* papel del último fotograma: x 43–548 de 600 */
+    var css=lienzo.clientWidth/W;
+    dx=(x0 + w*295.5/600 - W/2)*css;
+    hoja.style.width = ancho ? Math.min(470, w*505/600*css*0.94).toFixed(0)+'px' : '';
   }
   function cargar(i){ var im=new Image(); im.decoding='async'; im.onload=function(){ if(i===0||i===N-1) pintar(true); }; im.src=src(i); fotos[i]=im; }
   medir();
