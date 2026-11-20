@@ -282,7 +282,7 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
         <div>
           <h2 id="t-fin">Mándame tu mapa</h2>
           <p>Cuando lo tengas, hazle una captura y mándamela por Instagram o responde al correo con el que te llegó esto. Las leo todas.</p>
-          <a class="boton-ig" href="https://ig.me/m/tmv_podcast" target="_blank" rel="noopener">Mandar mi captura</a>
+          <a class="boton-ig" id="boton-ig" href="https://www.instagram.com/tmv_podcast/" target="_blank" rel="noopener">Mandar mi captura</a>
         </div>
         <div class="siguiente">
           <h3>Esto es un paso de cinco</h3>
@@ -375,6 +375,11 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
   });
   document.getElementById('cerrar').addEventListener('click',function(){dlg.close()});
   dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+})();
+
+(function(){
+  var a=document.getElementById('boton-ig');
+  if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) a.href='https://ig.me/m/tmv_podcast';
 })();
 </script>
 </body>
