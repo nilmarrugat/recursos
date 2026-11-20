@@ -33,7 +33,7 @@ a{color:inherit}
 @media(min-width:980px){.portada{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center}}
 .portada::before{content:"";position:absolute;right:-8%;top:-6%;width:70%;height:115%;pointer-events:none;background:radial-gradient(closest-side,rgba(248,192,67,.22),rgba(235,112,24,.08) 55%,transparent 75%);z-index:-1}
 h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(42px,7.6vw,96px);line-height:.92;letter-spacing:-.07em;max-width:13ch}
-.firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(44px,6.6vw,80px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-9px 0 0 4px}
+.firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(44px,6.6vw,80px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-10px 0 0 4px}
 .entradilla{max-width:46ch;margin-top:22px;font-size:19px;color:var(--texto)}
 .foto-portada{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px -30px rgba(90,48,16,.55);transform:rotate(1deg)}
 .foto-portada img{width:100%;height:100%;object-fit:cover;display:block}
@@ -94,18 +94,29 @@ h3{font-family:"Cal Sans";font-weight:400;font-size:21px;line-height:1.2;margin-
 .paso p{color:var(--texto);font-size:16px}
 
 /* Prueba */
-.prueba{display:grid;gap:28px;grid-template-columns:1fr}
-@media(min-width:980px){.prueba{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center}}
-.linea-notas{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;padding:22px}
-.curso{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed var(--linea)}
-.curso:last-child{border-bottom:0}
-.curso span{font-size:14.5px;color:var(--texto)}
-.puntos{display:flex;flex-wrap:wrap;gap:4px}
-.puntos i{width:11px;height:11px;border-radius:50%;background:#DCCDB8}
+.prueba-intro{margin-bottom:28px}
+.prueba-intro p{color:var(--texto);max-width:58ch}
+.cursos{display:grid;gap:12px;grid-template-columns:repeat(5,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px}
+.curso{scroll-snap-align:start;text-align:left;font:inherit;color:inherit;background:var(--tarjeta);border:1px solid var(--linea);border-radius:18px;padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,transform .15s}
+.curso:hover{border-color:var(--tinta);transform:translateY(-2px)}
+.curso:active{transform:scale(.98)}
+.curso .nombre{font-family:"Cal Sans";font-size:20px;line-height:1.1}
+.curso .anyo{font-size:13px;color:var(--gris)}
+.puntos{display:flex;flex-wrap:wrap;gap:5px}
+.puntos i{width:14px;height:14px;border-radius:50%;background:#DCCDB8}
 .puntos .n{background:var(--fluor)} .puntos .e{background:var(--naranja)}
-.curso b{font-family:"Archivo Black";font-weight:400;letter-spacing:-.04em;font-size:17px;white-space:nowrap}
-.leyenda{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--gris);margin-top:12px}
-.leyenda i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.dato{font-family:"Archivo Black";font-size:30px;letter-spacing:-.05em;line-height:1}
+.dato small{display:block;font-family:Inter;font-size:13px;letter-spacing:0;color:var(--gris);margin-top:6px;font-weight:400}
+.curso .ver{font-size:14px;font-weight:700;margin-top:auto;text-decoration:underline;text-underline-offset:3px}
+.leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--gris);margin-top:12px}
+.leyenda i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+dialog{margin:auto;border:0;padding:0;max-width:min(980px,96vw);width:100%;max-height:92vh;border-radius:20px;background:var(--papel);color:var(--tinta)}
+dialog::backdrop{background:rgba(43,29,20,.78)}
+.dlg-cab{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--papel);border-bottom:1px solid var(--linea);z-index:1}
+.dlg-cab b{font-family:"Cal Sans";font-weight:400;font-size:20px}
+.cerrar{font:700 15px Inter;background:var(--tinta);color:#fff;border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
+.dlg-cuerpo{padding:16px;display:grid;gap:14px}
+.dlg-cuerpo img{width:100%;height:auto;border-radius:10px;border:1px solid var(--linea);background:#fff}
 
 /* Preguntas */
 .preguntas{max-width:760px}
@@ -184,20 +195,19 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
   </section>
 
   <section aria-labelledby="t-prueba">
-    <div class="prueba">
-      <div>
-        <h2 id="t-prueba">No siempre saqué estas notas…</h2>
-        <p class="sub">En 1.º y 2.º de ESO era el de los notables, con algún aprobado justo. No me faltaban horas: me faltaba saber qué estudiar primero. Estos son mis boletines reales, curso a curso.</p>
-      </div>
-      <div class="linea-notas" aria-label="Evolución de las notas">
-        <div class="curso"><span>1.º de ESO</span><span class="puntos">SSNNNNNNNNEEE</span><b>3 de 13</b></div>
-        <div class="curso"><span>2.º de ESO</span><span class="puntos">SNNNNNNNNNEEE</span><b>3 de 13</b></div>
-        <div class="curso"><span>3.º de ESO</span><span class="puntos">NNEEEEEEEEEEE</span><b>11 de 13</b></div>
-        <div class="curso"><span>4.º de ESO</span><span class="puntos">NNNNEEEEEEE</span><b>7 de 11</b></div>
-        <div class="curso"><span>1.º de bach</span><span class="puntos">NNNNNEEEEE</span><b>8,8</b></div>
-        <div class="leyenda"><span><i style="background:#DCCDB8"></i>Satisfactorio</span><span><i style="background:var(--fluor)"></i>Notable</span><span><i style="background:var(--naranja)"></i>Excelente</span><span>· asignaturas con excelente / media final</span></div>
-      </div>
+    <div class="prueba-intro">
+      <h2 id="t-prueba">No siempre saqué estas notas…</h2>
+      <p>En 1.º y 2.º de ESO era el de los notables, con algún aprobado justo en Mates y en Inglés. No me faltaban horas: me faltaba saber qué estudiar primero. Cuando empecé a mirar mis apuntes como los mira quien corrige, cambió todo. Toca un curso para ver el boletín entero, con los comentarios de los profes.</p>
+      <div class="leyenda"><span><i style="background:#DCCDB8"></i>Satisfactorio</span><span><i style="background:var(--fluor)"></i>Notable</span><span><i style="background:var(--naranja)"></i>Excelente</span></div>
     </div>
+    <div class="cursos">
+        <button class="curso" data-curso="1eso" data-titulo="1.º de ESO · 2021-22" data-imgs="1eso-1,1eso-2"><span><span class="nombre">1.º de ESO</span><br><span class="anyo">2021-22</span></span><span class="puntos">SSN NNN NNN NEE E</span><span class="dato">3 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="2eso" data-titulo="2.º de ESO · 2022-23" data-imgs="2eso-1"><span><span class="nombre">2.º de ESO</span><br><span class="anyo">2022-23</span></span><span class="puntos">SNN NNN NNN NEE E</span><span class="dato">3 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="3eso" data-titulo="3.º de ESO · 2023-24" data-imgs="3eso-1"><span><span class="nombre">3.º de ESO</span><br><span class="anyo">2023-24</span></span><span class="puntos">NNE EEE EEE EEE E</span><span class="dato">11 de 13<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="4eso" data-titulo="4.º de ESO · 2024-25" data-imgs="4eso-1,4eso-2,4eso-3"><span><span class="nombre">4.º de ESO</span><br><span class="anyo">2024-25</span></span><span class="puntos">NNN NEE EEE EE</span><span class="dato">7 de 11<small>asignaturas con excelente</small></span><span class="ver">Ver boletín</span></button>
+        <button class="curso" data-curso="1bach" data-titulo="1.º de bachillerato · 2025-26" data-imgs="1bach-1"><span><span class="nombre">1.º de bachillerato</span><br><span class="anyo">2025-26</span></span><span class="puntos">NNN NNE EEE E</span><span class="dato">8,8<small>de media final</small></span><span class="ver">Ver boletín</span></button>
+      </div>
+      <dialog id="dlg" aria-labelledby="dlg-t"><div class="dlg-cab"><b id="dlg-t"></b><button class="cerrar" type="button" id="cerrar">Cerrar</button></div><div class="dlg-cuerpo" id="dlg-c"></div></dialog>
   </section>
 
   <section aria-labelledby="t-dudas">
@@ -231,9 +241,21 @@ footer{padding:44px 0;text-align:center;color:var(--gris);font-size:14px;border-
 (function(){
   /* puntos de notas */
   document.querySelectorAll('.puntos').forEach(function(p){
-    var t=p.textContent.trim(); p.textContent=''; p.setAttribute('aria-hidden','true');
+    var t=p.textContent.replace(/\s/g,''); p.textContent=''; p.setAttribute('aria-hidden','true');
     for(var i=0;i<t.length;i++){var d=document.createElement('i'); d.className=t[i]==='E'?'e':(t[i]==='N'?'n':''); p.appendChild(d);}
   });
+
+
+  var dlg=document.getElementById('dlg'), dc=document.getElementById('dlg-c'), dt=document.getElementById('dlg-t');
+  document.querySelectorAll('.curso').forEach(function(b){
+    b.addEventListener('click',function(){
+      dt.textContent=b.dataset.titulo; dc.innerHTML='';
+      b.dataset.imgs.split(',').forEach(function(n,i){var im=document.createElement('img'); im.src='img/'+n+'.jpg'; im.alt='Boletín de '+b.dataset.titulo+', página '+(i+1); dc.appendChild(im);});
+      if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+    });
+  });
+  document.getElementById('cerrar').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
 
   /* formulario: Kit */
   var KIT_FORM_ID='10219237';
