@@ -13,7 +13,11 @@ _base/                      plantilla maestra de landing (cuando exista): se reu
 
 - La **landing** es casi siempre la misma: cambian el titular, la promesa, el visual y la palabra clave. Se parte de `_base/`.
 - La **web del imán** es lo que cambia de verdad en cada uno.
-- Imán activo: `80` (Mapa 80/20, vídeo CAPT-01). Kit: landing `f42a00a7d1`; ReplyRush: disparador global "80".
+- Imán activo: `80` (Mapa 80/20, vídeo CAPT-01).
+  - Landing: `/80/` (formulario propio → Kit, formulario `10219237`, `action=https://app.kit.com/forms/10219237/subscriptions`, campo `email_address`).
+  - Tras suscribirse: `/80/gracias/`. Tras confirmar el correo (doble opt-in): `/80/mapa-k7q2/` (la web del imán).
+  - ReplyRush: disparador global "80" → botón a `/80/`. La landing antigua de Kit (`f42a00a7d1`) queda como reserva y también redirige a `/80/mapa-k7q2/`.
+  - Limitación conocida: Kit solo envía el correo de confirmación a suscriptores nuevos; quien ya estaba en la lista no lo recibe.
 
 ## Equipo de skills (en `.claude/skills/`): orden de uso
 
