@@ -300,7 +300,7 @@ function pintar(){
           el('button', {class:'chip desc', type:'button', 'aria-label':'Empezar descanso de ' + e.desc, onclick(){ empezarDescanso(e.seg); }, text:'⏱ ' + e.desc})),
         ult ? el('div', {class:'ult'}, document.createTextNode('Última vez '), el('b', {text:ult})) : null)));
     if (e0.alt) card.append(el('button', {class:'alt', type:'button', onclick(){ elegidas[e0.id] = !elegidas[e0.id]; ls.set('byron_variantes', elegidas); pintar(); }},
-      elegidas[e0.id] ? el('span', null, document.createTextNode('Haciendo la alternativa. '), el('u', {text:'Volver a: ' + e0.nombre})) : el('span', null, document.createTextNode(e0.alt.cuando + '? '), el('u', {text:'Haz ' + e0.alt.nombre.toLowerCase()}))));
+      elegidas[e0.id] ? el('span', null, document.createTextNode('Haciendo la alternativa. '), el('u', {text:'Volver a: ' + e0.nombre})) : el('span', null, document.createTextNode('¿' + e0.alt.cuando + '? '), el('u', {text:'Haz ' + e0.alt.nombre.toLowerCase()}))));
     const btn = el('button', {class:'apuntar', type:'button', 'aria-expanded':'false'}, el('span', {text:'Apuntar series'}), el('span', {class:'ok', text: hechos[clave] ? '✓ Apuntado hoy' : ''}));
     const reg = el('div', {class:'reg'});
     btn.addEventListener('click', () => { const ab = card.classList.toggle('abierto'); btn.setAttribute('aria-expanded', String(ab)); if (ab && !reg.childElementCount) formulario(reg, e0, e, clave, btn); });
