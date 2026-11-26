@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recursos gratis · TMV | Tu Mejor Versión</title>
+<meta name="description" content="Las webs gratis que he montado con lo que me funciona. Coge la que te sirva.">
+<meta property="og:title" content="Recursos gratis · TMV">
+<meta property="og:description" content="Las webs gratis que he montado con lo que me funciona. Coge la que te sirva.">
+<meta name="theme-color" content="#F7EFE3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cal+Sans&family=Inter:wght@400;500;700&family=Mr+Dafoe&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F7EFE3; --tinta:#2B1D14; --texto:#4A3829; --gris:#7C6857; --linea:#E9DBC7;
+  --tarjeta:#FFFAF2; --brasa:#3A2416; --naranja:#EB7018; --fluor:#F8C043; --azul:#2F80ED;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;min-height:100vh;display:flex;flex-direction:column}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:6px}
+.envoltura{max-width:1180px;width:100%;margin:0 auto;padding:0 22px;flex:1}
+.barra{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.marca{font-family:"Archivo Black";font-size:15px;letter-spacing:-.03em;text-decoration:none}
+.marca span{color:var(--naranja)}
+.barra small{font-size:14px;color:var(--gris)}
+
+.portada{position:relative;padding:36px 0 48px}
+.portada::before{content:"";position:absolute;right:-8%;top:-10%;width:70%;height:130%;pointer-events:none;background:radial-gradient(closest-side,rgba(248,192,67,.22),rgba(235,112,24,.08) 55%,transparent 75%);z-index:-1}
+h1{font-family:"Archivo Black";font-weight:400;font-size:clamp(48px,9vw,96px);line-height:.92;letter-spacing:-.07em}
+.firma{font-family:"Mr Dafoe";color:var(--naranja);font-size:clamp(46px,7vw,80px);line-height:1;display:inline-block;transform:rotate(-4deg);margin:-10px 0 0 4px}
+.entradilla{max-width:40ch;margin-top:18px;font-size:19px;color:var(--texto)}
+.redes{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.redes a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;background:var(--tarjeta);border:1.5px solid var(--linea);border-radius:999px;padding:10px 18px;transition:border-color .15s,transform .1s}
+.redes a:hover{border-color:var(--tinta)}
+.redes a:active{transform:scale(.97)}
+.redes svg{width:18px;height:18px;flex:none}
+.redes a span{font-weight:400;color:var(--gris)}
+
+.lista{border-top:1px solid var(--linea);padding:48px 0 64px;position:relative;isolation:isolate}
+.lista::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:min(820px,120vw);aspect-ratio:1;top:-120px;left:-260px;background:radial-gradient(closest-side,rgba(248,192,67,.20),rgba(235,112,24,.07) 55%,transparent 78%)}
+h2{font-family:"Cal Sans";font-weight:400;font-size:clamp(26px,4vw,36px);line-height:1.08;margin-bottom:22px}
+.tarjetas{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));list-style:none}
+.tarjeta{display:flex;flex-direction:column;height:100%;text-decoration:none;background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -26px rgba(120,60,15,.45);transition:border-color .15s,transform .15s}
+.tarjeta:hover{border-color:var(--tinta);transform:translateY(-2px)}
+.tarjeta:active{transform:scale(.98)}
+.tarjeta figure{aspect-ratio:4/3;background:var(--linea);overflow:hidden}
+.tarjeta img{width:100%;height:100%;object-fit:cover;display:block}
+.tarjeta-cuerpo{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tarjeta h3{font-family:"Cal Sans";font-weight:400;font-size:23px;line-height:1.12}
+.tarjeta h3 .firma{font-size:34px;margin:0 0 0 2px;vertical-align:-2px}
+.tarjeta p{color:var(--texto);font-size:16px}
+.tarjeta .ver{margin-top:auto;padding-top:6px;font-weight:700;font-size:15px;text-decoration:underline;text-underline-offset:3px}
+.vacio{color:var(--gris)}
+
+footer{padding:44px 22px;text-align:center;color:var(--gris);font-size:14px;border-top:1px solid var(--linea)}
+@media(max-width:600px){.portada{padding:20px 0 32px}.entradilla{font-size:18px}.redes a{flex:1;justify-content:center;padding:10px 12px}.redes a b{display:none}.redes a span{color:var(--tinta);font-weight:700}.lista{padding:32px 0 48px}h2{margin-bottom:16px}.tarjetas{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="envoltura">
+  <header class="barra">
+    <a class="marca" href="/">TMV <span>|</span> Tu Mejor Versión</a>
+    <small>Recursos gratuitos</small>
+  </header>
+
+  <section class="portada">
+    <h1>Recursos</h1>
+    <span class="firma">gratis</span>
+    <p class="entradilla">Las webs gratis que he montado con lo que me funciona. Coge la que te sirva.</p>
+    <nav class="redes" aria-label="Redes">
+      <a href="https://www.youtube.com/@TMV_podcast" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EB7018" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8Z"/><path fill="#FFFAF2" d="m9.7 15.3 5.8-3.3-5.8-3.3z"/></svg>
+        <b>YouTube</b> <span>@TMV_podcast</span>
+      </a>
+      <a href="https://www.instagram.com/tmv_podcast/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#EB7018" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#EB7018"/></svg>
+        <b>Instagram</b> <span>@tmv_podcast</span>
+      </a>
+    </nav>
+  </section>
+
+  <section class="lista" aria-labelledby="t-lista">
+    <h2 id="t-lista">Elige uno</h2>
+    <ul class="tarjetas" id="tarjetas"></ul>
+    <noscript><p class="vacio">Activa JavaScript para ver la lista, o entra directo en <a href="/80/">/80/</a>.</p></noscript>
+  </section>
+</div>
+
+<footer>TMV | Tu Mejor Versión · Hecho por Nil Marrugat</footer>
+
+<script>
+/* La lista sale de /recursos.json: para añadir un imán, añade una línea allí. */
+(function(){
+  var ul=document.getElementById('tarjetas');
+  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt)e.textContent=txt;return e}
+  fetch('/recursos.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(lista){
+    if(!lista.length){ul.appendChild(el('li','vacio','Pronto habrá algo aquí.'));return}
+    lista.forEach(function(r){
+      var li=el('li'), a=el('a','tarjeta'); a.href=r.ruta;
+      if(r.imagen){var f=el('figure'),i=el('img');i.src=r.imagen;i.alt='';i.loading='lazy';i.width=1400;i.height=1050;f.appendChild(i);a.appendChild(f)}
+      var c=el('div','tarjeta-cuerpo'), h=el('h3',null,r.titulo);
+      if(r.firma){h.appendChild(document.createTextNode(' '));h.appendChild(el('span','firma',r.firma))}
+      c.appendChild(h);
+      if(r.frase)c.appendChild(el('p',null,r.frase));
+      c.appendChild(el('span','ver','Abrir'));
+      a.appendChild(c); li.appendChild(a); ul.appendChild(li);
+    });
+  }).catch(function(){
+    var li=el('li','vacio');li.innerHTML='No se ha podido cargar la lista. Prueba a recargar la página.';ul.appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>

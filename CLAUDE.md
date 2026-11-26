@@ -5,6 +5,9 @@ Repositorio de las webs de captación de Nil Marrugat (TMV | Tu Mejor Versión).
 ## Estructura
 
 ```
+index.html                  portada: lista de imanes, la lee de recursos.json
+recursos.json               una línea por imán publicado (ruta de la landing, título, firma, frase, imagen)
+404.html                    página para cualquier ruta que no existe, con botón a la portada
 <palabra>/index.html        landing del imán (formulario de Kit con doble opt-in)
 <palabra>/<ruta-oculta>/    la web del imán, a la que solo se llega al confirmar el correo
 <palabra>/img/              imágenes de ese imán
